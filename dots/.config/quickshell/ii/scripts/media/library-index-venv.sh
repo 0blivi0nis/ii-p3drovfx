@@ -4,7 +4,7 @@
 # on machines that happen to have them installed system-wide.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-VENV_ACTIVATE=$(eval echo "${ILLOGICAL_IMPULSE_VIRTUAL_ENV:-}")/bin/activate
+VENV_ACTIVATE=$(eval echo "${QUICKSHELL_VIRTUAL_ENV:-}")/bin/activate
 if [ -f "$VENV_ACTIVATE" ]; then
     source "$VENV_ACTIVATE"
     python3 "$SCRIPT_DIR/library_index.py" "$@"

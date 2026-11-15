@@ -189,7 +189,7 @@ Singleton {
         const token = `${Directories.state}/user/generated/.preview_request_token`;
         return `unset LD_LIBRARY_PATH PYTHONHOME PYTHONPATH; `
             + `export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"; `
-            + `venv="\${ILLOGICAL_IMPULSE_VIRTUAL_ENV:-\${XDG_STATE_HOME:-$HOME/.local/state}/quickshell/.venv}"; `
+            + `venv="\${QUICKSHELL_VIRTUAL_ENV:-\${XDG_STATE_HOME:-$HOME/.local/state}/quickshell/.venv}"; `
             + `source "$(eval echo "$venv")/bin/activate" 2>/dev/null; `
             + `token=${PreviewLogic.shellQuote(token)}; tok=$(cat "$token" 2>/dev/null || echo 0); `
             + `exec python3 ${PreviewLogic.shellQuote(script)} --path ${PreviewLogic.shellQuote(wallpaper)} `

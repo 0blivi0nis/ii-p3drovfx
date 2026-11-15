@@ -35,7 +35,7 @@ fi
 # The same activation switchwall.sh performs, for the same reason: the
 # generator's `#!/usr/bin/env -S _/bin/sh_ -c_...` shebang is fragile enough that
 # running the file directly is not worth relying on.
-venv="${ILLOGICAL_IMPULSE_VIRTUAL_ENV:-$XDG_STATE_HOME/quickshell/.venv}"
+venv="${QUICKSHELL_VIRTUAL_ENV:-$XDG_STATE_HOME/quickshell/.venv}"
 # shellcheck disable=SC1090
 source "$(eval echo "$venv")/bin/activate"
 

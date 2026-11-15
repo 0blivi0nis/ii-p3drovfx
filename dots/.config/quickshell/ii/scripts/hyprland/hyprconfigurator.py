@@ -1,4 +1,4 @@
-#!/usr/bin/env -S /bin/sh -c "source \$(eval echo \$ILLOGICAL_IMPULSE_VIRTUAL_ENV)/bin/activate&&exec python -E \"\$0\" \"\$@\""
+#!/usr/bin/env -S /bin/sh -c "source \$(eval echo \$QUICKSHELL_VIRTUAL_ENV)/bin/activate&&exec python -E \"\$0\" \"\$@\""
 import argparse, re, os, tempfile
 
 def format_value(value):

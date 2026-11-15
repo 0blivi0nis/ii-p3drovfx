@@ -85,7 +85,7 @@ Singleton {
 
     readonly property string analogOutputScript: `${Directories.scriptPath}/audio/analog-output.py`
     readonly property string analogOutputPython: {
-        const venv = Quickshell.env("ILLOGICAL_IMPULSE_VIRTUAL_ENV");
+        const venv = Quickshell.env("QUICKSHELL_VIRTUAL_ENV");
         return venv ? venv.replace(/^~\//, Quickshell.env("HOME") + "/") + "/bin/python" : "python3";
     }
     readonly property bool analogOutputSwitching: analogOutputSwitch.running

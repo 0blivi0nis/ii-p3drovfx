@@ -1,4 +1,5 @@
 ## Why is this important?
+
 Instead of installing python packages via system package manager, we should install them into virtual environment.
 
 This is important because there has been so many complaints about the failure installing/updating python packages via system package manager, see [#1017](https://github.com/end-4/dots-hyprland/issues/1017).
@@ -6,10 +7,13 @@ This is important because there has been so many complaints about the failure in
 ## How to add/remove python package?
 
 1. Edit `requirements.in`. You may refer to [PyPI](https://pypi.org/) for possible package names.
-  - If PyPI does not have the needed package, we probably need to build it manually inside the venv. In such case we need to edit the install scripts.
+
+- If PyPI does not have the needed package, we probably need to build it manually inside the venv. In such case we need to edit the install scripts.
+
 2. Run `uv pip compile requirements.in -o requirements.txt` in this folder.
 
 **Notes:**
+
 - For reference see [uv doc](https://docs.astral.sh/uv/pip/dependencies/#using-requirementsin).
 - `requirements.txt` is included in Git. It's for locking package versions to enhance stability and reproducibility.[^1]
 
@@ -18,10 +22,11 @@ This is important because there has been so many complaints about the failure in
 ## How will the python packages get installed?
 
 For summary:
-- They will be installed to the virtual environment `$ILLOGICAL_IMPULSE_VIRTUAL_ENV`.
-- The default value of `$ILLOGICAL_IMPULSE_VIRTUAL_ENV` is `$XDG_STATE_HOME/quickshell/.venv`.
-  - The default value of `$XDG_STATE_HOME` is `$HOME/.local/state`.
-- Currently we use `env = ILLOGICAL_IMPULSE_VIRTUAL_ENV, ~/.local/state/quickshell/.venv` in `~/.config/hypr/hyprland/env.conf` to set this environment variable.[^2]
+
+- They will be installed to the virtual environment `$QUICKSHELL_VIRTUAL_ENV`.
+- The default value of `$QUICKSHELL_VIRTUAL_ENV` is `$XDG_STATE_HOME/quickshell/.venv`.
+    - The default value of `$XDG_STATE_HOME` is `$HOME/.local/state`.
+- Currently we use `env = QUICKSHELL_VIRTUAL_ENV, ~/.local/state/quickshell/.venv` in `~/.config/hypr/hyprland/env.conf` to set this environment variable.[^2]
 
 For details: see the function `install-python-packages()` defined in `/sdata/lib/package-installers.sh`.
 
@@ -30,8 +35,9 @@ For details: see the function `install-python-packages()` defined in `/sdata/lib
 ## How to use the python packages installed through here?
 
 Basically you'll need to activate the virtual environment first:
+
 ```bash
-source $(eval echo $ILLOGICAL_IMPULSE_VIRTUAL_ENV)/bin/activate
+source $(eval echo $QUICKSHELL_VIRTUAL_ENV)/bin/activate
 ```
 
 It will add the python executable located in the venv to `$PATH` and give it the highest priority.
@@ -41,39 +47,47 @@ This python executable will also search and use the python package inside the ve
 which enables running any python script or running command provided via python package using the venv.
 
 After that you probably need to deactivate it:
+
 ```bash
 deactivate
 ```
 
 ### Situation 1: As a single command
+
 **Description:** At someplace which accept a single command,
+
 - run a python script,
 - or run a command provided by python package.
 
 Example: In `~/‎.config/quickshell/ii/screenshot.qml`:
+
 ```qml
 Process {
 id: imageDetectionProcess
-                command: ["bash", "-c", `${Directories.scriptPath}/images/find_regions.py ` 
-+ `--hyprctl ` 
-+ `--image '${StringUtils.shellSingleQuoteEscape(panelWindow.screenshotPath)}' ` 
-+ `--max-width ${Math.round(panelWindow.screen.width * root.falsePositivePreventionRatio)} ` 
+                command: ["bash", "-c", `${Directories.scriptPath}/images/find_regions.py `
++ `--hyprctl `
++ `--image '${StringUtils.shellSingleQuoteEscape(panelWindow.screenshotPath)}' `
++ `--max-width ${Math.round(panelWindow.screen.width * root.falsePositivePreventionRatio)} `
 ```
+
 In this example, python script `find_regions.py` is called and receives some arguments.
 
 #### Solution A: shebang
 
 Add the shebang below to the beginning of python script:
+
 ```python
-#!/usr/bin/env -S\_/bin/sh\_-c\_"source\_\$(eval\_echo\_\$ILLOGICAL_IMPULSE_VIRTUAL_ENV)/bin/activate&&exec\_python\_-E\_"\$0"\_"\$@""
+#!/usr/bin/env -S\_/bin/sh\_-c\_"source\_\$(eval\_echo\_\$QUICKSHELL_VIRTUAL_ENV)/bin/activate&&exec\_python\_-E\_"\$0"\_"\$@""
 ```
+
 And that's it!
 
 **Note:** This is the simplest solution as it only modifies the shebang of python script.
 **However:**
+
 - It's only for python script, not the command provided by python package.
 - It can not deal with complex argument (e.g. filename containing spaces) passed to the python script.
-  - If we apply this solution to the example above, it may cause problem, considering that `--image '${StringUtils.shellSingleQuoteEscape(panelWindow.screenshotPath)}'` could be a rather complex argument passed to `find_regions.py`.
+    - If we apply this solution to the example above, it may cause problem, considering that `--image '${StringUtils.shellSingleQuoteEscape(panelWindow.screenshotPath)}'` could be a rather complex argument passed to `find_regions.py`.
 - This solution rely on shebang to activate the correct python venv, but the shebang will be ignored if the script is directly passed to the interpreter, e.g. `python3 foo.py`.
 
 #### Solution B: bash script as wrapper
@@ -82,6 +96,7 @@ First make sure the python script is using the shebang `#!/usr/bin/env python3`,
 
 Then write a wrapper script in bash.
 Let's continue the `screenshot.qml` example, in the same directory as `find_regions.py`, write a `find-regions-venv.sh`:
+
 ```bash
 #!/usr/bin/env bash
 
@@ -89,30 +104,35 @@ Let's continue the `screenshot.qml` example, in the same directory as `find_regi
 # The example below only applies when `find_regions.py` and this wrapper script are under the same folder.
 PY_SCRIPT="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)/find_regions.py"
 
-source $(eval echo $ILLOGICAL_IMPULSE_VIRTUAL_ENV)/bin/activate
+source $(eval echo $QUICKSHELL_VIRTUAL_ENV)/bin/activate
 "$PY_SCRIPT" "$@"
 deactivate
 ```
+
 **Not done yet!** Do not forget to update the code calling the original python script.
 In this example, in `~/‎.config/quickshell/ii/screenshot.qml` we should modify `find_regions.py` to the wrapper script `find-regions-venv.sh`:
+
 ```qml
 Process {
 id: imageDetectionProcess
-                command: ["bash", "-c", `${Directories.scriptPath}/images/find-regions-venv.sh ` 
-+ `--hyprctl ` 
-+ `--image '${StringUtils.shellSingleQuoteEscape(panelWindow.screenshotPath)}' ` 
-+ `--max-width ${Math.round(panelWindow.screen.width * root.falsePositivePreventionRatio)} ` 
+                command: ["bash", "-c", `${Directories.scriptPath}/images/find-regions-venv.sh `
++ `--hyprctl `
++ `--image '${StringUtils.shellSingleQuoteEscape(panelWindow.screenshotPath)}' `
++ `--max-width ${Math.round(panelWindow.screen.width * root.falsePositivePreventionRatio)} `
 ```
 
 ### Situation 2: Inside a bash script
+
 Note: the solutions for `Situation 1: As a single command` also apply here; but **not** vice versa.
 
 **Description:**
 Inside a bash script,
+
 - run a python script,
 - or run a command provided by python package.
 
 **Solution:**
+
 - Add "activation command" before the target line,
 - Also add "deactivation command" after the target line.
 
@@ -120,8 +140,9 @@ Inside a bash script,
 
 For running a python script,
 take `generate_colors_material.py` as example:
+
 ```bash
-source "$(eval echo $ILLOGICAL_IMPULSE_VIRTUAL_ENV)/bin/activate"
+source "$(eval echo $QUICKSHELL_VIRTUAL_ENV)/bin/activate"
 python3 "$SCRIPT_DIR/generate_colors_material.py" "${generate_colors_material_args[@]}" \
   > "$STATE_DIR"/user/generated/material_colors.scss
 "$SCRIPT_DIR"/applycolor.sh
@@ -129,11 +150,9 @@ python3 "$SCRIPT_DIR/generate_colors_material.py" "${generate_colors_material_ar
 
 For running a python script provided by python package,
 take `kde-material-you-colors` as example:
+
 ```bash
-source "$(eval echo $ILLOGICAL_IMPULSE_VIRTUAL_ENV)/bin/activate"
+source "$(eval echo $QUICKSHELL_VIRTUAL_ENV)/bin/activate"
 kde-material-you-colors "$mode_flag" --color "$color" -sv "$sv_num"
 deactivate
 ```
-
-
-

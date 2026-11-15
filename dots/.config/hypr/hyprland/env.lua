@@ -51,7 +51,7 @@ hl.env("XDG_MENU_PREFIX", "plasma-")
 prepend_unique("QML_IMPORT_PATH", { home_dir .. "/.local/lib/qt6/qml" })
 
 -- Virtual environment
-hl.env("ILLOGICAL_IMPULSE_VIRTUAL_ENV", home_dir .. "/.local/state/quickshell/.venv")
+hl.env("QUICKSHELL_VIRTUAL_ENV", home_dir .. "/.local/state/quickshell/.venv")
 
 -- Wireless ADB: the adb server sends a TCP keepalive every second by default, which
 -- wakes a locked phone ~30 times a minute and roughly doubled its idle drain once

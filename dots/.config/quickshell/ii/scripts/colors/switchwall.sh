@@ -928,7 +928,7 @@ done"
             apply_color_overrides_flat "$mode_flag"
         fi
         if [[ -z "$colors_only_flag" && "$(jq -r '.appearance.icons.enableThemed' "$SHELL_CONFIG_FILE" 2>/dev/null)" == "true" ]]; then recolor_icons_in_background; fi
-        source "$(eval echo $ILLOGICAL_IMPULSE_VIRTUAL_ENV)/bin/activate"
+        source "$(eval echo $QUICKSHELL_VIRTUAL_ENV)/bin/activate"
         preview_args=()
         if [[ -z "$colors_only_flag" ]]; then
             preview_args+=(
@@ -953,7 +953,7 @@ done"
     # Using gowall and python helper to recolor a base SVG theme
     #echo "Generating dynamic icons..."
     #python3 "$HOME/.config/quickshell/ii/scripts/colors/recolor_icons.py"
-    #local _venv="${ILLOGICAL_IMPULSE_VIRTUAL_ENV:-$XDG_STATE_HOME/quickshell/.venv}"
+    #local _venv="${QUICKSHELL_VIRTUAL_ENV:-$XDG_STATE_HOME/quickshell/.venv}"
     #source "$(eval echo $_venv)/bin/activate"
     #python3 "$SCRIPT_DIR/generate_colors_material.py" "${generate_colors_material_args[@]}" \
     #    > "$STATE_DIR"/user/generated/material_colors.scss.tmp && \
@@ -1009,7 +1009,7 @@ main() {
 
     detect_scheme_type_from_image() {
         local img="$1"
-        local _venv="${ILLOGICAL_IMPULSE_VIRTUAL_ENV:-$XDG_STATE_HOME/quickshell/.venv}"
+        local _venv="${QUICKSHELL_VIRTUAL_ENV:-$XDG_STATE_HOME/quickshell/.venv}"
         source "$(eval echo $_venv)/bin/activate"
         "$SCRIPT_DIR"/scheme_for_image.py "$img" 2>/dev/null | tr -d '\n'
         deactivate
