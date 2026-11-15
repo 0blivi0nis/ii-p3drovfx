@@ -57,7 +57,12 @@ AbstractWidget {
     property bool visibleWhenLocked: lockBehavior === "keep" || lockBehavior === "custom" || lockBehavior === "center" || lockBehavior === "lockOnly"
     // The lock layout: the real lock once its wallpaper has centred, or Edit
     // Mode's Lockscreen tab, which previews it without a lock session.
-    readonly property bool lockLayoutActive: GlobalStates.lockScreenCentered || GlobalStates.editLockLayout
+    // Per screen: Edit Mode previews the lock on the screen being edited only.
+    // A widget with no screen (a catalogue preview) follows the tab itself.
+    readonly property bool editLockHere: GlobalStates.editLockLayout
+        && (monitorName === "" || GlobalStates.editModeMonitor === monitorName)
+    readonly property bool lockLookHere: GlobalStates.screenLocked || editLockHere
+    readonly property bool lockLayoutActive: GlobalStates.lockScreenCentered || editLockHere
     property bool forceCenter: (lockLayoutActive || GlobalStates.workspaceRestoreInProgress) && lockBehavior === "center"
 
     function getCenteredWidgetsList() {
@@ -295,10 +300,21 @@ AbstractWidget {
     readonly property real lifecycleScale: (0.92 + 0.08 * root.entryProgress)
         * (0.82 + 0.18 * root.exitProgress)
 
+    // The delegate hands the instance (the saved position) over only once its
+    // Loader is ready - at login ~1-2 s after the widget exists. Entering before
+    // that showed every widget stacked on the default spot, then sliding to its
+    // own. Wait for it (bounded, in case a host never sets one).
+    property bool _instanceWaitExpired: false
+    Timer {
+        interval: 3000
+        running: !root.isPreview && root.widgetInstance === null && !root._instanceWaitExpired
+        onTriggered: root._instanceWaitExpired = true
+    }
     Timer {
         id: entryTimer
         interval: Math.max(1, root.staggerDelay)
         running: !root.isPreview && !root.entryDone && !GlobalStates.presetHoldMotion
+            && (root.widgetInstance !== null || root._instanceWaitExpired)
         repeat: false
         onTriggered: {
             root.entryDone = true;
@@ -726,7 +742,7 @@ AbstractWidget {
             if (isPreview || widgetInstance === null)
                 return;
             const rounded = Math.round(target * 100) / 100;
-            Config.updateWidgetScale(widgetInstance.id, rounded, monitorName, GlobalStates.lockLookActive);
+            Config.updateWidgetScale(widgetInstance.id, rounded, monitorName, lockLookHere);
             x = WidgetDragMath.clamp(x, dragMinimumX(), dragMaximumX());
             y = WidgetDragMath.clamp(y, dragMinimumY(), dragMaximumY());
         }
@@ -879,6 +895,9 @@ AbstractWidget {
         if (!isDragging && !root.isDraggingOrSettling && !root.isPreview) {
             if (GlobalStates.presetHoldMotion && root.entryDone) {
                 root._pendingPosition = true;
+            } else if (!root.entryDone) {
+                // Not shown yet: land on the spot, nothing to animate.
+                root.x = targetX;
             } else if (root.staggerDelay > 0) {
                 root._pendingPosition = true;
                 staggerTimer.interval = root.staggerDelay;
@@ -892,6 +911,8 @@ AbstractWidget {
         if (!isDragging && !root.isDraggingOrSettling && !root.isPreview) {
             if (GlobalStates.presetHoldMotion && root.entryDone) {
                 root._pendingPosition = true;
+            } else if (!root.entryDone) {
+                root.y = targetY;
             } else if (root.staggerDelay > 0) {
                 root._pendingPosition = true;
                 staggerTimer.interval = root.staggerDelay;
@@ -998,7 +1019,7 @@ AbstractWidget {
         const list = Config.options.background.activeWidgets || [];
         const result = {};
         for (let i = 0; i < list.length; i++)
-            result[list[i].id] = WidgetPlacement.resolve(list[i], monitorName, GlobalStates.lockLookActive);
+            result[list[i].id] = WidgetPlacement.resolve(list[i], monitorName, lockLookHere);
         return result;
     }
 
@@ -1429,7 +1450,7 @@ AbstractWidget {
         // Written to the surface being shown: the lock fork on the Lockscreen
         // tab, the desktop's placement otherwise.
         if (widgetInstance !== null)
-            Config.updateWidgetPosition(widgetInstance.id, newX, newY, monitorName, GlobalStates.lockLookActive);
+            Config.updateWidgetPosition(widgetInstance.id, newX, newY, monitorName, lockLookHere);
         else if (configEntry) {
             configEntry.x = newX;
             configEntry.y = newY;

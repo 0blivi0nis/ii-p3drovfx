@@ -63,6 +63,9 @@ Item {
     // its poster frame).
     property string framingKey: ""
     readonly property string screenName: screen ? screen.name : ""
+    // The lock's look on THIS screen: the real lock everywhere, Edit Mode's
+    // preview only on the screen being edited (GlobalStates.lockLookFor).
+    readonly property bool lockLook: GlobalStates.lockLookFor(wallpaperImageRoot.screenName)
     // Follows the picture actually on the plane, not the config: a new
     // wallpaper's framing lands with the new picture instead of re-cropping
     // the old one for the moment before the crossfade starts.
@@ -107,7 +110,7 @@ Item {
     readonly property bool shellVideoPlaying: visible && !mediaModeOpen
         && !shellVideoEffectsBusy
         && !(GlobalStates.oledSaverMonitors ?? []).includes(screen?.name ?? "")
-        && (GlobalStates.lockLookActive
+        && (wallpaperImageRoot.lockLook
             ? !lockscreenWallpaper.isActive && !(Config.options.background.videoPauseOnLock ?? true)
             : !shellVideoCovered && !((Config.options.background.videoPauseWhenWindowsOpen ?? false) && hasWindowsInActiveWorkspace))
 
@@ -557,10 +560,14 @@ Item {
         imageSource: wallpaperImageRoot.overviewController.useBackingImage && !wallpaperSafetyTriggered ? wallpaperPath : ""
         animated: Config.options.background.animateWallpaperChanges
         fillMode: Image.PreserveAspectCrop
+        // Only once the plane has shown its picture: this backing is decoded at 1/8 of the
+        // screen and decodes first, so at login it was the whole wallpaper, pixelated,
+        // until the full-size decode landed on top of it.
         visible: (wallpaperImageRoot.overviewController.isGnomeLike
             ? !wallpaperSafetyTriggered
             : wallpaperImageRoot.overviewController.useBackingImage && wallpaperImageRoot.overviewAnimationVisible && !wallpaperSafetyTriggered)
             && !wallpaperIsVideo && !Config.options.background.useWallpaperEngine
+            && wallpaperImageRoot.wallpaperEverReady
         opacity: 1.0
         mipmap: false
         antialiasing: false
@@ -651,6 +658,7 @@ Item {
     // The overview-style lock animation (Gnome Like / Material Shape) puts the
     // lock's look on the backing wallpaper; the zooming plane stays clean.
     LockBlur {
+        lockLook: wallpaperImageRoot.lockLook
         id: backingLockBlur
         anchors.fill: overviewBackingImage
         suppressed: !wallpaperImageRoot.overviewController.lockDriven
@@ -661,6 +669,7 @@ Item {
         wallpaperIsVideo: wallpaperImageRoot.wallpaperIsVideo || Config.options.background.useWallpaperEngine
     }
     LockDesaturate {
+        lockLook: wallpaperImageRoot.lockLook
         anchors.fill: overviewBackingImage
         suppressed: !wallpaperImageRoot.overviewController.lockDriven
         sourceItem: Config.options.lock.blur.enable ? backingLockBlur : overviewBackingImage
@@ -669,6 +678,7 @@ Item {
         lockAnimationActive: wallpaperImageRoot.lockAnimationActive
     }
     LockColorWash {
+        lockLook: wallpaperImageRoot.lockLook
         anchors.fill: overviewBackingImage
         suppressed: !wallpaperImageRoot.overviewController.lockDriven
         sourceItem: overviewBackingImage
@@ -676,6 +686,7 @@ Item {
         lockAnimationActive: wallpaperImageRoot.lockAnimationActive
     }
     LockVignette {
+        lockLook: wallpaperImageRoot.lockLook
         anchors.fill: overviewBackingImage
         suppressed: !wallpaperImageRoot.overviewController.lockDriven
         sourceItem: overviewBackingImage
@@ -928,7 +939,7 @@ Item {
                 // Material Shape retains this layer between openings. Scale and
                 // parallax are outer transforms: the wallpaper texture stays clean
                 // while the shader moves its screen-space cutout over that texture.
-                layer.enabled: wallpaperImageRoot.lockAnimationActive || GlobalStates.lockLookActive || wallpaperImageRoot.materialShapeDirectMask
+                layer.enabled: wallpaperImageRoot.lockAnimationActive || wallpaperImageRoot.lockLook || wallpaperImageRoot.materialShapeDirectMask
                 layer.effect: wallpaperImageRoot.materialShapeDirectMask ? materialWallpaperMaskEffect : null
                 width: wallpaperPlanes.wallpaperW
                 height: wallpaperPlanes.wallpaperH
@@ -1137,7 +1148,7 @@ Item {
                             && Wallpapers.isVideoFile(String(wallpaperImageRoot.lockscreenWallpaperPath).toLowerCase())
                         // Built on lock and torn down on unlock: a decoder has no
                         // business staying alive behind an unlocked desktop.
-                        active: isVideoLockscreen && GlobalStates.lockLookActive
+                        active: isVideoLockscreen && wallpaperImageRoot.lockLook
                         visible: active && opacity > 0
                         opacity: active ? 1 : 0
                         Behavior on opacity {
@@ -1174,7 +1185,7 @@ Item {
 
                         readonly property bool isActive: wallpaperImageRoot.useSeparateLockscreenWallpaper && wallpaperImageRoot.lockscreenWallpaperPath !== "" && wallpaperImageRoot.lockscreenWallpaperPath !== wallpaperImageRoot.wallpaperPath
                         visible: isActive && opacity > 0
-                        opacity: (isActive && GlobalStates.lockLookActive) ? 1.0 : 0.0
+                        opacity: (isActive && wallpaperImageRoot.lockLook) ? 1.0 : 0.0
 
                         Behavior on opacity {
                             NumberAnimation {
@@ -1241,6 +1252,7 @@ Item {
                 }
 
                 LockBlur {
+                    lockLook: wallpaperImageRoot.lockLook
                     id: lockBlur
                     anchors.fill: parent
                     suppressed: wallpaperImageRoot.overviewController.lockDriven
@@ -1252,6 +1264,7 @@ Item {
                 }
 
                 LockDesaturate {
+                    lockLook: wallpaperImageRoot.lockLook
                     anchors.fill: parent
                     suppressed: wallpaperImageRoot.overviewController.lockDriven
                     sourceItem: Config.options.lock.blur.enable ? lockBlur : wallpaperVisualContainer
@@ -1261,6 +1274,7 @@ Item {
                 }
 
                 LockColorWash {
+                    lockLook: wallpaperImageRoot.lockLook
                     anchors.fill: parent
                     suppressed: wallpaperImageRoot.overviewController.lockDriven
                     sourceItem: wallpaperVisualContainer
@@ -1269,6 +1283,7 @@ Item {
                 }
 
                 LockVignette {
+                    lockLook: wallpaperImageRoot.lockLook
                     anchors.fill: parent
                     suppressed: wallpaperImageRoot.overviewController.lockDriven
                     sourceItem: wallpaperVisualContainer
