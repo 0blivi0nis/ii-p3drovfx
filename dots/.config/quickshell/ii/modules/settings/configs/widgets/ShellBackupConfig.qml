@@ -10,7 +10,7 @@ import qs.modules.common.widgets
  * Settings backup: one zip of everything the shell knows about this user, and
  * the way back from it.
  *
- * The two folders it carries - `~/.config/illogical-impulse` and
+ * The two folders it carries - `~/.config/quickshell` and
  * `~/.local/state/quickshell` - are not reproducible from the repository, so a
  * reinstall without one of these is a new desktop rather than the same one.
  *

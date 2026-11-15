@@ -32,7 +32,7 @@ class TestPresetsShPhotoExport(unittest.TestCase):
         with open(self.cat_img, "wb") as f:
             f.write(b"SAMPLE_PHOTO_CONTENT_12345")
 
-        # Create config.json in ~/.config/illogical-impulse/config.json
+        # Create config.json in ~/.config/quickshell/config.json
         self.cfg_dir = os.path.join(self.home, ".config", "illogical-impulse")
         os.makedirs(self.cfg_dir, exist_ok=True)
         self.config_path = os.path.join(self.cfg_dir, "config.json")

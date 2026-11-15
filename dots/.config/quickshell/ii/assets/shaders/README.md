@@ -15,7 +15,7 @@ already scans:
 3. `~/.config/hyprshade/shaders`
 4. `/usr/share/hyprshade/shaders`
 
-…or point `screenShader.extraShaderDirs` in `~/.config/illogical-impulse/config.json`
+…or point `screenShader.extraShaderDirs` in `~/.config/quickshell/config.json`
 at somewhere else entirely.
 
 ## Writing one
@@ -36,7 +36,7 @@ void main() {
 }
 ```
 
-A shader that samples the *whole* screen rather than just the current pixel
+A shader that samples the _whole_ screen rather than just the current pixel
 (like `anti-flashbang.glsl`) needs damage tracking relaxed, or only the redrawn
 region gets the effect. Add its name to `fullDamageShaders` in
 `services/ScreenShader.qml`.

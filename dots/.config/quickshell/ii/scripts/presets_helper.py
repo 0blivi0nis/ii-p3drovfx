@@ -250,7 +250,7 @@ LOCAL_ONLY_PATHS = (
 )
 # The shell keeps a durable mirror of every path here (plus the dock/search
 # keys above and the blacklisted root sections) in
-# ~/.config/illogical-impulse/local-preferences.json, so deleting config.json
+# ~/.config/quickshell/local-preferences.json, so deleting config.json
 # no longer takes them with it. Written by modules/common/LocalPreferences.qml
 # — keep the protected-path list there in sync with the lists above. The file
 # is a plain { "<concrete dotted path>": value } map.

@@ -106,7 +106,7 @@ singleton is lazy, so without it nothing is collected until the overlay is first
 
 Settings → System → **App Usage** turns collection and the overlay on or off; everything
 else is in the overlay itself, behind the gear next to its close button. The same keys live under
-`Config.options.appStats` in `~/.config/illogical-impulse/config.json`.
+`Config.options.appStats` in `~/.config/quickshell/config.json`.
 
 Everything in the first table is a command-line flag the daemon reads once at
 startup, so changing one relaunches it.
@@ -122,22 +122,22 @@ startup, so changing one relaunches it.
 | `gpuFullEvery`     | `30`              | samples between full GPU rescans                                                                                                                                          |
 | `idleTimeoutSec`   | `300`             | seconds without input before foreground time stops; `0` disables the idle monitor                                                                                         |
 | `trackHeadless`    | `true`            | record processes that own no window                                                                                                                                       |
-| `trackNetwork`     | `true`            | record TCP data per app from the kernel's socket counters (see [Network data](#network-data))                                                                            |
+| `trackNetwork`     | `true`            | record TCP data per app from the kernel's socket counters (see [Network data](#network-data))                                                                             |
 
 The rest are read live by the overlay.
 
-| Key                  | Default | Effect                                                                                                                         |
-| -------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `overlayEnabled`     | `true`  | load the overlay panel                                                                                                         |
-| `showHeadless`       | `false` | count headless processes in the list and the totals                                                                            |
-| `defaultGranularity` | `"day"` | `day`, `week` or `month`                                                                                                       |
-| `defaultMetric`      | `"fg"`  | `fg`, `focus`, `energy`, `cpu` or `gpu`                                                                                        |
-| `rememberLastView`   | `true`  | reopen on the last granularity, metric and view instead of the defaults above                                                  |
-| `lastView`           | `"apps"`| which page reopens: `apps`, `battery`, `network` or `limits`. A page that is not there falls back to `apps`                    |
-| `weekStartsMonday`   | `true`  | which day a calendar week runs from                                                                                            |
-| `keepSelection`      | `false` | keep the picked app across openings                                                                                            |
-| `showComparison`     | `false` | percent change against the period before. Off by default: it parses that period as well, doubling the files a month view reads |
-| `minDurationSec`     | `0`     | hide apps under this from the list. Duration metrics only, and never from the totals                                           |
+| Key                  | Default  | Effect                                                                                                                         |
+| -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `overlayEnabled`     | `true`   | load the overlay panel                                                                                                         |
+| `showHeadless`       | `false`  | count headless processes in the list and the totals                                                                            |
+| `defaultGranularity` | `"day"`  | `day`, `week` or `month`                                                                                                       |
+| `defaultMetric`      | `"fg"`   | `fg`, `focus`, `energy`, `cpu` or `gpu`                                                                                        |
+| `rememberLastView`   | `true`   | reopen on the last granularity, metric and view instead of the defaults above                                                  |
+| `lastView`           | `"apps"` | which page reopens: `apps`, `battery`, `network` or `limits`. A page that is not there falls back to `apps`                    |
+| `weekStartsMonday`   | `true`   | which day a calendar week runs from                                                                                            |
+| `keepSelection`      | `false`  | keep the picked app across openings                                                                                            |
+| `showComparison`     | `false`  | percent change against the period before. Off by default: it parses that period as well, doubling the files a month view reads |
+| `minDurationSec`     | `0`      | hide apps under this from the list. Duration metrics only, and never from the totals                                           |
 
 Turning `enable` off stops collection but keeps the history; deleting the state
 directory, or the button on the settings page, is what discards it.
@@ -225,13 +225,13 @@ say where an hour opened and closed. The section is additive: the app tuples are
 unchanged, so a file with it reads on an older shell and a file without it reads here
 as a day with no battery history.
 
-| idx | field   | unit        |     | idx | field      | unit |
-| --- | ------- | ----------- | --- | --- | ---------- | ---- |
-| 0   | `start` | 0.1 %       |     | 5   | `in`       | mWh  |
-| 1   | `end`   | 0.1 %       |     | 6   | `offAc`    | s    |
-| 2   | `low`   | 0.1 %       |     | 7   | `charging` | s    |
-| 3   | `high`  | 0.1 %       |     | 8   | `onAc`     | s    |
-| 4   | `out`   | mWh         |     |     |            |      |
+| idx | field   | unit  |     | idx | field      | unit |
+| --- | ------- | ----- | --- | --- | ---------- | ---- |
+| 0   | `start` | 0.1 % |     | 5   | `in`       | mWh  |
+| 1   | `end`   | 0.1 % |     | 6   | `offAc`    | s    |
+| 2   | `low`   | 0.1 % |     | 7   | `charging` | s    |
+| 3   | `high`  | 0.1 % |     | 8   | `onAc`     | s    |
+| 4   | `out`   | mWh   |     |     |            |      |
 
 The level is `charge_now / charge_full`, not `capacity`, which the kernel rounds to
 whole percent — a whole percent is an hour the level never appears to move. `out` and `in` are integrated
@@ -305,11 +305,11 @@ Needs `clang` and `libbpf` (headers and library) to build. It installs a root-ow
 copy at `/usr/local/lib/ii/app_stats_net`, mode `0750` group `wheel`, with file
 capabilities — the helper never runs as root:
 
-| Capability      | Why                                                              |
-| --------------- | ---------------------------------------------------------------- |
-| `CAP_BPF`       | load the programs and create their maps                          |
+| Capability      | Why                                                               |
+| --------------- | ----------------------------------------------------------------- |
+| `CAP_BPF`       | load the programs and create their maps                           |
 | `CAP_PERFMON`   | the `fentry` programs, and reading the parent of the current task |
-| `CAP_NET_ADMIN` | attach the packet counters to the root cgroup                    |
+| `CAP_NET_ADMIN` | attach the packet counters to the root cgroup                     |
 
 Only `wheel` may run it, because it sees every user's per-process traffic. Every program
 is attached through a BPF link the helper owns, so all of them detach when it exits —

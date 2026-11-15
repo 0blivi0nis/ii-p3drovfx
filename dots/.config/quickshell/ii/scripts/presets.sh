@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-PRESETS_DIR="$HOME/.config/illogical-impulse/presets"
-CONFIG_FILE="$HOME/.config/illogical-impulse/config.json"
+PRESETS_DIR="$HOME/.config/quickshell/presets"
+CONFIG_FILE="$HOME/.config/quickshell/config.json"
 SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BACKUP_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/ii/preset-backups"
 BACKUP_KEEP=10

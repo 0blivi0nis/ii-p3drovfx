@@ -32,7 +32,7 @@ def find_workshop_paths():
         os.path.expanduser("~/.steam/steam/steamapps/workshop/content/431960"),
         os.path.expanduser("~/.steam/root/steamapps/workshop/content/431960"),
     ]
-    config_path = os.path.expanduser("~/.config/illogical-impulse/config.json")
+    config_path = os.path.expanduser("~/.config/quickshell/config.json")
     if os.path.exists(config_path):
         try:
             with open(config_path, "r") as f:
@@ -49,7 +49,7 @@ def find_workshop_paths():
 
 
 def find_assets_dir():
-    config_path = os.path.expanduser("~/.config/illogical-impulse/config.json")
+    config_path = os.path.expanduser("~/.config/quickshell/config.json")
     if os.path.exists(config_path):
         try:
             with open(config_path) as f:

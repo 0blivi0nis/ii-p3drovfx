@@ -42,36 +42,36 @@ Os números manuais abaixo devem ser lidos como **observações do usuário**, n
 
 ### 2.1. Observações manuais do preset
 
-| Área | Observação registrada |
-|---|---|
-| System monitor bar widget | Acréscimo aparente de aproximadamente 30 MiB. |
+| Área                         | Observação registrada                                                                                                                                                                     |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| System monitor bar widget    | Acréscimo aparente de aproximadamente 30 MiB.                                                                                                                                             |
 | Sidebars mantidas carregadas | As duas sidebars aumentaram aproximadamente 200 MiB; Dashboard respondeu pela maior parte. Policies com AI chat, translator e phone aumentou cerca de 50 MiB. Sem Phone, cerca de 30 MiB. |
-| Phone na policy | Remover Phone aumentou o consumo instantâneo em um teste, sugerindo que sua presença/desativação altera um serviço ou ciclo de vida adicional. |
-| Sidebars sem keep-loaded | Com as duas sidebars descarregadas e a bar vazia, o shell ficou em aproximadamente 600 MiB; abrir Dashboard levou a aproximadamente 700 MiB. |
-| Notificações | Uma notificação chegou a provocar aproximadamente 100–150 MiB momentâneos; com system sounds desabilitados, o acréscimo caiu para aproximadamente 20 MiB. |
-| Quick toggles | Acréscimo de aproximadamente 20 MiB no teste controlado. |
-| Connect mode | Dashboard consumiu aproximadamente 100 MiB a mais em idle que no modo default. |
-| Dock | Dock completa aumentou aproximadamente 100 MiB. O Sports widget foi o maior custo, cerca de 65 MiB. |
-| Dynamic island | Aproximadamente 70 MiB, considerado dentro do esperado. |
-| Background | Aproximadamente 30 MiB; a maior parte veio de parallax. Sem anomalia evidente no teste manual. |
-| Overview | Aproximadamente 20 MiB; animações de background adicionaram outros 20 MiB apenas ao abrir. |
-| Lockscreen | Sem acréscimo relevante em idle com efeitos ativos. |
-| Search, overlays e OSD | Sem acréscimo relevante em idle no teste manual. |
-| Cheatsheet | `keepLastTabReady` aumentou aproximadamente 50 MiB. Timetable adicionou aproximadamente 80 MiB ao abrir; typing test aproximadamente 60 MiB. |
-| Modes and routines | Aproximadamente 40 MiB após abrir. |
-| Usage | Aproximadamente 50 MiB após abrir; ainda precisa ser validado se existe timeout de liberação. |
-| Clock bar widget | Aproximadamente 40 MiB. |
-| Policies panel button | Aproximadamente 35 MiB. |
-| System monitor widget | Aproximadamente 20 MiB, independente da quantidade de itens. |
-| AI Usage widget | Aproximadamente 20 MiB. |
-| Portwatcher | Aproximadamente 30 MiB. |
-| Shell update indicator | Aproximadamente 50 MiB; candidato para investigação. |
-| Calendar bar widget | Aproximadamente 30 MiB, apesar de ser estático. |
-| Weather widget | Aproximadamente 30 MiB. |
-| Sports widget da bar | Aproximadamente 70 MiB sem esportes rastreados e 100 MiB com esportes. |
-| Desktop widgets | Aproximadamente 30–50 MiB; considerados baixa prioridade. |
-| Edit mode | Aproximadamente 150 MiB ao abrir; deve liberar tudo ao fechar, sem cache permanente. |
-| Welcome | Aproximadamente 50 MiB; deve liberar tudo imediatamente após fechar. |
+| Phone na policy              | Remover Phone aumentou o consumo instantâneo em um teste, sugerindo que sua presença/desativação altera um serviço ou ciclo de vida adicional.                                            |
+| Sidebars sem keep-loaded     | Com as duas sidebars descarregadas e a bar vazia, o shell ficou em aproximadamente 600 MiB; abrir Dashboard levou a aproximadamente 700 MiB.                                              |
+| Notificações                 | Uma notificação chegou a provocar aproximadamente 100–150 MiB momentâneos; com system sounds desabilitados, o acréscimo caiu para aproximadamente 20 MiB.                                 |
+| Quick toggles                | Acréscimo de aproximadamente 20 MiB no teste controlado.                                                                                                                                  |
+| Connect mode                 | Dashboard consumiu aproximadamente 100 MiB a mais em idle que no modo default.                                                                                                            |
+| Dock                         | Dock completa aumentou aproximadamente 100 MiB. O Sports widget foi o maior custo, cerca de 65 MiB.                                                                                       |
+| Dynamic island               | Aproximadamente 70 MiB, considerado dentro do esperado.                                                                                                                                   |
+| Background                   | Aproximadamente 30 MiB; a maior parte veio de parallax. Sem anomalia evidente no teste manual.                                                                                            |
+| Overview                     | Aproximadamente 20 MiB; animações de background adicionaram outros 20 MiB apenas ao abrir.                                                                                                |
+| Lockscreen                   | Sem acréscimo relevante em idle com efeitos ativos.                                                                                                                                       |
+| Search, overlays e OSD       | Sem acréscimo relevante em idle no teste manual.                                                                                                                                          |
+| Cheatsheet                   | `keepLastTabReady` aumentou aproximadamente 50 MiB. Timetable adicionou aproximadamente 80 MiB ao abrir; typing test aproximadamente 60 MiB.                                              |
+| Modes and routines           | Aproximadamente 40 MiB após abrir.                                                                                                                                                        |
+| Usage                        | Aproximadamente 50 MiB após abrir; ainda precisa ser validado se existe timeout de liberação.                                                                                             |
+| Clock bar widget             | Aproximadamente 40 MiB.                                                                                                                                                                   |
+| Policies panel button        | Aproximadamente 35 MiB.                                                                                                                                                                   |
+| System monitor widget        | Aproximadamente 20 MiB, independente da quantidade de itens.                                                                                                                              |
+| AI Usage widget              | Aproximadamente 20 MiB.                                                                                                                                                                   |
+| Portwatcher                  | Aproximadamente 30 MiB.                                                                                                                                                                   |
+| Shell update indicator       | Aproximadamente 50 MiB; candidato para investigação.                                                                                                                                      |
+| Calendar bar widget          | Aproximadamente 30 MiB, apesar de ser estático.                                                                                                                                           |
+| Weather widget               | Aproximadamente 30 MiB.                                                                                                                                                                   |
+| Sports widget da bar         | Aproximadamente 70 MiB sem esportes rastreados e 100 MiB com esportes.                                                                                                                    |
+| Desktop widgets              | Aproximadamente 30–50 MiB; considerados baixa prioridade.                                                                                                                                 |
+| Edit mode                    | Aproximadamente 150 MiB ao abrir; deve liberar tudo ao fechar, sem cache permanente.                                                                                                      |
+| Welcome                      | Aproximadamente 50 MiB; deve liberar tudo imediatamente após fechar.                                                                                                                      |
 
 O teste instrumental abaixo não reabriu cada popup nem reproduziu todos os eventos de usuário. Seu objetivo foi primeiro separar o custo de cada `PanelLoader` em um processo novo e compará-lo com o End4.
 
@@ -81,7 +81,7 @@ O teste instrumental abaixo não reabriu cada popup nem reproduziu todos os even
 
 - Working tree lógico: `/home/pedro/.config/quickshell/ii`
 - Working tree real: `/home/pedro/Downloads/ii-vynx/dots/.config/quickshell/ii`
-- Preset/configuração do usuário: `/home/pedro/.config/illogical-impulse/config.json`
+- Preset/configuração do usuário: `/home/pedro/.config/quickshell/config.json`
 - Família usada no shell normal: `ii`
 - Estado final após os testes: família normal restaurada; nenhum harness temporário permanece no fork.
 
@@ -110,16 +110,16 @@ O PID é apenas uma fotografia do momento da auditoria; ele não deve ser reutil
 
 Os seguintes números são indicadores de superfície arquitetural, não atribuições diretas de RAM:
 
-| Estrutura | Fork | End4 | Interpretação |
-|---|---:|---:|---|
-| `shell.qml` | aproximadamente 358 linhas | aproximadamente 77 | O fork concentra mais bootstrap, serviços e loaders no shell. |
-| `panelFamilies/IllogicalImpulseFamily.qml` | 48 `PanelLoader` | 20 `PanelLoader` | O fork instancia ou conhece uma superfície maior de componentes. |
-| `panelFamilies/PanelLoader.qml` | 40 linhas | 9 linhas | O loader do fork tem mais lógica de ciclo de vida. |
-| Serviços QML | 277 arquivos | 53 arquivos | O fork possui uma camada de serviços significativamente maior. |
-| Módulos `modules/ii` | 869 arquivos | 199 arquivos | A superfície visual do fork é muito maior. |
-| Declarações de singleton | 241 | 68 | Mais singletons podem aumentar imports, objetos vivos e referências globais. |
-| `GlobalStates.qml` | aproximadamente 2.820 linhas | aproximadamente 54 | O estado global do fork é muito mais abrangente. |
-| `services/HyprlandData.qml` | 399 linhas | 166 | Há mais integração e estado de Hyprland no fork. |
+| Estrutura                                  |                         Fork |               End4 | Interpretação                                                                |
+| ------------------------------------------ | ---------------------------: | -----------------: | ---------------------------------------------------------------------------- |
+| `shell.qml`                                |   aproximadamente 358 linhas | aproximadamente 77 | O fork concentra mais bootstrap, serviços e loaders no shell.                |
+| `panelFamilies/IllogicalImpulseFamily.qml` |             48 `PanelLoader` |   20 `PanelLoader` | O fork instancia ou conhece uma superfície maior de componentes.             |
+| `panelFamilies/PanelLoader.qml`            |                    40 linhas |           9 linhas | O loader do fork tem mais lógica de ciclo de vida.                           |
+| Serviços QML                               |                 277 arquivos |        53 arquivos | O fork possui uma camada de serviços significativamente maior.               |
+| Módulos `modules/ii`                       |                 869 arquivos |       199 arquivos | A superfície visual do fork é muito maior.                                   |
+| Declarações de singleton                   |                          241 |                 68 | Mais singletons podem aumentar imports, objetos vivos e referências globais. |
+| `GlobalStates.qml`                         | aproximadamente 2.820 linhas | aproximadamente 54 | O estado global do fork é muito mais abrangente.                             |
+| `services/HyprlandData.qml`                |                   399 linhas |                166 | Há mais integração e estado de Hyprland no fork.                             |
 
 Esses valores explicam por que a baseline do fork pode ser mais alta, mas não provam qual item retém a memória. A atribuição foi feita com o harness isolado.
 
@@ -163,12 +163,12 @@ Métricas coletadas:
 
 Antes do teste item a item, houve uma medição sem família e outra com os 20 loaders mínimos:
 
-| Estado | RSS | PSS | Private Dirty | Anonymous | JSGCHeap | Observação |
-|---|---:|---:|---:|---:|---:|---|
-| Core sem panel loader, 60 s | 266.112 KiB | 147.862 KiB | 113.516 KiB | 113.516 KiB | 5.164 KiB | Boot mínimo e serviços imediatos reduzidos. |
-| 20 loaders mínimos, 60 s | 626.988 KiB | 497.911 KiB | 442.112 KiB | 430.348 KiB | 53.720 KiB | Família equivalente ao conjunto mínimo usado na comparação. |
-| Fork normal limpo, 30 s | 649.532 KiB | 520.491 KiB | 464.720 KiB | não repetido nessa leitura | 55.120 KiB | Instância normal após restauração. |
-| Fork normal limpo, 81 s | 650.036 KiB | 520.964 KiB | 465.224 KiB | não repetido nessa leitura | 55.120 KiB | Mostra estabilidade próxima de 650 MiB antes de outros eventos. |
+| Estado                      |         RSS |         PSS | Private Dirty |                  Anonymous |   JSGCHeap | Observação                                                      |
+| --------------------------- | ----------: | ----------: | ------------: | -------------------------: | ---------: | --------------------------------------------------------------- |
+| Core sem panel loader, 60 s | 266.112 KiB | 147.862 KiB |   113.516 KiB |                113.516 KiB |  5.164 KiB | Boot mínimo e serviços imediatos reduzidos.                     |
+| 20 loaders mínimos, 60 s    | 626.988 KiB | 497.911 KiB |   442.112 KiB |                430.348 KiB | 53.720 KiB | Família equivalente ao conjunto mínimo usado na comparação.     |
+| Fork normal limpo, 30 s     | 649.532 KiB | 520.491 KiB |   464.720 KiB | não repetido nessa leitura | 55.120 KiB | Instância normal após restauração.                              |
+| Fork normal limpo, 81 s     | 650.036 KiB | 520.964 KiB |   465.224 KiB | não repetido nessa leitura | 55.120 KiB | Mostra estabilidade próxima de 650 MiB antes de outros eventos. |
 
 O conjunto de 20 loaders adicionou aproximadamente **361 MiB de RSS** sobre o core sem família. A diferença restante até o shell normal é compatível com serviços e módulos adicionais, e não com um único widget isolado.
 
@@ -190,51 +190,51 @@ O timer de serviços adiados foi explicitamente desativado para que serviços n�
 Baseline `none` do fork, aproximadamente 10 segundos após o boot:
 
 | RSS KiB | PSS KiB | Private Dirty KiB | Anonymous KiB | JSGCHeap KiB | Filhos KiB |
-|---:|---:|---:|---:|---:|---:|
-| 325.536 | 207.292 | 167.180 | 167.180 | 5.352 | 4.352 |
+| ------: | ------: | ----------------: | ------------: | -----------: | ---------: |
+| 325.536 | 207.292 |           167.180 |       167.180 |        5.352 |      4.352 |
 
 ### 6.1. Fork por item
 
-| Item | RSS KiB | PSS KiB | Private Dirty KiB | Anonymous KiB | JSGCHeap KiB | Filhos KiB |
-|---|---:|---:|---:|---:|---:|---:|
-| `bar` | 464.288 | 335.226 | 283.096 | 282.672 | 54.268 | 16.204 |
-| `background` | 487.732 | 364.684 | 315.928 | 304.592 | 5.392 | 16.388 |
-| `cheatsheet` | 333.844 | 215.619 | 175.612 | 175.612 | 7.076 | 4.108 |
-| `dock` | 395.308 | 269.953 | 214.296 | 210.764 | 15.156 | 4.352 |
-| `lock` | 346.524 | 225.193 | 180.348 | 180.156 | 7.020 | 4.172 |
-| `mediaControls` | 337.144 | 218.867 | 178.448 | 178.448 | 7.012 | 4.092 |
-| `notificationPopup` | 340.540 | 220.984 | 178.560 | 178.560 | 7.032 | 4.352 |
-| `osd` | 337.356 | 217.855 | 177.088 | 177.088 | 7.016 | 4.352 |
-| `onScreenKeyboard` | 325.392 | 207.355 | 167.468 | 167.468 | 5.296 | 4.352 |
-| `overlay` | 326.544 | 208.276 | 168.096 | 168.096 | 5.292 | 4.360 |
-| `overview` | 447.824 | 321.154 | 274.020 | 273.828 | 54.964 | 16.680 |
-| `polkit` | 335.776 | 216.072 | 175.928 | 175.928 | 7.012 | 4.356 |
-| `regionSelector` | 323.728 | 205.592 | 165.820 | 165.820 | 5.352 | 4.352 |
-| `screenCorners` | 353.124 | 230.373 | 182.456 | 182.084 | 5.288 | 4.040 |
-| `screenTranslator` | 324.356 | 206.408 | 166.296 | 166.296 | 5.288 | 4.356 |
-| `sessionScreen` | 324.416 | 206.195 | 166.188 | 166.188 | 5.288 | 4.356 |
-| `sidebarPolicies` | 324.404 | 206.129 | 165.612 | 165.612 | 5.292 | 4.104 |
-| `sidebarDashboard` | 324.828 | 206.776 | 166.632 | 166.632 | 5.352 | 4.356 |
-| `verticalBar` | 345.808 | 222.988 | 174.400 | 174.156 | 5.360 | 4.356 |
-| `wallpaperSelector` | 325.332 | 207.223 | 167.032 | 167.032 | 5.352 | 4.356 |
+| Item                | RSS KiB | PSS KiB | Private Dirty KiB | Anonymous KiB | JSGCHeap KiB | Filhos KiB |
+| ------------------- | ------: | ------: | ----------------: | ------------: | -----------: | ---------: |
+| `bar`               | 464.288 | 335.226 |           283.096 |       282.672 |       54.268 |     16.204 |
+| `background`        | 487.732 | 364.684 |           315.928 |       304.592 |        5.392 |     16.388 |
+| `cheatsheet`        | 333.844 | 215.619 |           175.612 |       175.612 |        7.076 |      4.108 |
+| `dock`              | 395.308 | 269.953 |           214.296 |       210.764 |       15.156 |      4.352 |
+| `lock`              | 346.524 | 225.193 |           180.348 |       180.156 |        7.020 |      4.172 |
+| `mediaControls`     | 337.144 | 218.867 |           178.448 |       178.448 |        7.012 |      4.092 |
+| `notificationPopup` | 340.540 | 220.984 |           178.560 |       178.560 |        7.032 |      4.352 |
+| `osd`               | 337.356 | 217.855 |           177.088 |       177.088 |        7.016 |      4.352 |
+| `onScreenKeyboard`  | 325.392 | 207.355 |           167.468 |       167.468 |        5.296 |      4.352 |
+| `overlay`           | 326.544 | 208.276 |           168.096 |       168.096 |        5.292 |      4.360 |
+| `overview`          | 447.824 | 321.154 |           274.020 |       273.828 |       54.964 |     16.680 |
+| `polkit`            | 335.776 | 216.072 |           175.928 |       175.928 |        7.012 |      4.356 |
+| `regionSelector`    | 323.728 | 205.592 |           165.820 |       165.820 |        5.352 |      4.352 |
+| `screenCorners`     | 353.124 | 230.373 |           182.456 |       182.084 |        5.288 |      4.040 |
+| `screenTranslator`  | 324.356 | 206.408 |           166.296 |       166.296 |        5.288 |      4.356 |
+| `sessionScreen`     | 324.416 | 206.195 |           166.188 |       166.188 |        5.288 |      4.356 |
+| `sidebarPolicies`   | 324.404 | 206.129 |           165.612 |       165.612 |        5.292 |      4.104 |
+| `sidebarDashboard`  | 324.828 | 206.776 |           166.632 |       166.632 |        5.352 |      4.356 |
+| `verticalBar`       | 345.808 | 222.988 |           174.400 |       174.156 |        5.360 |      4.356 |
+| `wallpaperSelector` | 325.332 | 207.223 |           167.032 |       167.032 |        5.352 |      4.356 |
 
 ### 6.2. Deltas de RSS do fork
 
-| Item | Delta RSS aproximado |
-|---|---:|
-| `background` | +162,2 MiB |
-| `bar` | +138,8 MiB* |
-| `overview` | +122,3 MiB |
-| `dock` | +69,8 MiB |
-| `screenCorners` | +27,6 MiB |
-| `lock` | +21,0 MiB |
-| `verticalBar` | +20,3 MiB |
-| `notificationPopup` | +15,0 MiB |
-| `osd` | +11,8 MiB |
-| `mediaControls` | +11,6 MiB |
-| `polkit` | +10,2 MiB |
-| `cheatsheet` | +8,3 MiB |
-| `overlay` | +1,0 MiB |
+| Item                                                                                                                                  |                  Delta RSS aproximado |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------: |
+| `background`                                                                                                                          |                            +162,2 MiB |
+| `bar`                                                                                                                                 |                          +138,8 MiB\* |
+| `overview`                                                                                                                            |                            +122,3 MiB |
+| `dock`                                                                                                                                |                             +69,8 MiB |
+| `screenCorners`                                                                                                                       |                             +27,6 MiB |
+| `lock`                                                                                                                                |                             +21,0 MiB |
+| `verticalBar`                                                                                                                         |                             +20,3 MiB |
+| `notificationPopup`                                                                                                                   |                             +15,0 MiB |
+| `osd`                                                                                                                                 |                             +11,8 MiB |
+| `mediaControls`                                                                                                                       |                             +11,6 MiB |
+| `polkit`                                                                                                                              |                             +10,2 MiB |
+| `cheatsheet`                                                                                                                          |                              +8,3 MiB |
+| `overlay`                                                                                                                             |                              +1,0 MiB |
 | `onScreenKeyboard`, `regionSelector`, `screenTranslator`, `sessionScreen`, `sidebarPolicies`, `sidebarDashboard`, `wallpaperSelector` | aproximadamente 0 MiB dentro do ruído |
 
 \* O item `bar` foi forçado em uma configuração em que a barra normal não era a barra ativa; ele não deve ser usado para estimar o custo da barra vertical. Para o modo ativo investigado, usar `verticalBar` (+20,3 MiB).
@@ -244,51 +244,51 @@ Baseline `none` do fork, aproximadamente 10 segundos após o boot:
 Baseline `none` do End4, aproximadamente 10 segundos após o boot:
 
 | RSS KiB | PSS KiB | Private Dirty KiB | Anonymous KiB | JSGCHeap KiB | Filhos KiB |
-|---:|---:|---:|---:|---:|---:|
-| 228.300 | 109.082 | 85.620 | 85.620 | 1.184 | 0 |
+| ------: | ------: | ----------------: | ------------: | -----------: | ---------: |
+| 228.300 | 109.082 |            85.620 |        85.620 |        1.184 |          0 |
 
 ### 7.1. End4 por item
 
-| Item | RSS KiB | PSS KiB | Private Dirty KiB | Anonymous KiB | JSGCHeap KiB | Filhos KiB |
-|---|---:|---:|---:|---:|---:|---:|
-| `bar` | 228.280 | 109.128 | 85.700 | 85.700 | 1.184 | 0 |
-| `background` | 284.360 | 142.858 | 108.408 | 108.392 | 4.848 | 12.344 |
-| `cheatsheet` | 392.844 | 252.717 | 208.896 | 189.800 | 3.660 | 12.052 |
-| `dock` | 228.764 | 109.297 | 85.636 | 85.636 | 1.184 | 0 |
-| `lock` | 336.380 | 202.154 | 162.320 | 157.900 | 3.640 | 0 |
-| `mediaControls` | 228.280 | 108.820 | 85.464 | 85.464 | 1.208 | 0 |
-| `notificationPopup` | 230.508 | 110.873 | 86.528 | 86.528 | 1.188 | 0 |
-| `osd` | 325.552 | 190.706 | 147.668 | 143.560 | 2.368 | 0 |
-| `onScreenKeyboard` | 231.232 | 110.003 | 85.992 | 85.992 | 1.204 | 0 |
-| `overlay` | 228.476 | 108.921 | 85.512 | 85.512 | 1.264 | 0 |
-| `overview` | 229.056 | 109.512 | 85.968 | 85.968 | 1.184 | 0 |
-| `polkit` | 247.804 | 126.102 | 97.516 | 97.516 | 6.264 | 12.100 |
-| `regionSelector` | 230.772 | 109.625 | 86.140 | 86.140 | 1.184 | 0 |
-| `screenCorners` | 228.532 | 108.927 | 85.236 | 85.236 | 1.184 | 0 |
-| `screenTranslator` | 315.468 | 184.461 | 150.696 | 150.288 | 1.212 | 0 |
-| `sessionScreen` | 226.040 | 106.325 | 82.664 | 82.664 | 1.184 | 0 |
-| `sidebarLeft` | 228.892 | 109.188 | 85.408 | 85.408 | 1.184 | 0 |
-| `sidebarRight` | 256.600 | 128.962 | 100.888 | 100.888 | 4.280 | 0 |
-| `verticalBar` | 289.196 | 144.042 | 108.644 | 108.452 | 2.768 | 12.188 |
-| `wallpaperSelector` | 284.696 | 145.064 | 109.440 | 109.424 | 5.108 | 12.356 |
+| Item                | RSS KiB | PSS KiB | Private Dirty KiB | Anonymous KiB | JSGCHeap KiB | Filhos KiB |
+| ------------------- | ------: | ------: | ----------------: | ------------: | -----------: | ---------: |
+| `bar`               | 228.280 | 109.128 |            85.700 |        85.700 |        1.184 |          0 |
+| `background`        | 284.360 | 142.858 |           108.408 |       108.392 |        4.848 |     12.344 |
+| `cheatsheet`        | 392.844 | 252.717 |           208.896 |       189.800 |        3.660 |     12.052 |
+| `dock`              | 228.764 | 109.297 |            85.636 |        85.636 |        1.184 |          0 |
+| `lock`              | 336.380 | 202.154 |           162.320 |       157.900 |        3.640 |          0 |
+| `mediaControls`     | 228.280 | 108.820 |            85.464 |        85.464 |        1.208 |          0 |
+| `notificationPopup` | 230.508 | 110.873 |            86.528 |        86.528 |        1.188 |          0 |
+| `osd`               | 325.552 | 190.706 |           147.668 |       143.560 |        2.368 |          0 |
+| `onScreenKeyboard`  | 231.232 | 110.003 |            85.992 |        85.992 |        1.204 |          0 |
+| `overlay`           | 228.476 | 108.921 |            85.512 |        85.512 |        1.264 |          0 |
+| `overview`          | 229.056 | 109.512 |            85.968 |        85.968 |        1.184 |          0 |
+| `polkit`            | 247.804 | 126.102 |            97.516 |        97.516 |        6.264 |     12.100 |
+| `regionSelector`    | 230.772 | 109.625 |            86.140 |        86.140 |        1.184 |          0 |
+| `screenCorners`     | 228.532 | 108.927 |            85.236 |        85.236 |        1.184 |          0 |
+| `screenTranslator`  | 315.468 | 184.461 |           150.696 |       150.288 |        1.212 |          0 |
+| `sessionScreen`     | 226.040 | 106.325 |            82.664 |        82.664 |        1.184 |          0 |
+| `sidebarLeft`       | 228.892 | 109.188 |            85.408 |        85.408 |        1.184 |          0 |
+| `sidebarRight`      | 256.600 | 128.962 |           100.888 |       100.888 |        4.280 |          0 |
+| `verticalBar`       | 289.196 | 144.042 |           108.644 |       108.452 |        2.768 |     12.188 |
+| `wallpaperSelector` | 284.696 | 145.064 |           109.440 |       109.424 |        5.108 |     12.356 |
 
 ### 7.2. Deltas de RSS do End4
 
-| Item | Delta RSS aproximado |
-|---|---:|
-| `cheatsheet` | +164,5 MiB |
-| `lock` | +108,1 MiB |
-| `osd` | +97,3 MiB |
-| `screenTranslator` | +87,2 MiB |
-| `verticalBar` | +60,9 MiB |
-| `wallpaperSelector` | +56,4 MiB |
-| `background` | +56,1 MiB |
-| `sidebarRight` | +28,3 MiB |
-| `polkit` | +19,5 MiB |
-| `onScreenKeyboard` | +2,9 MiB |
-| `regionSelector` | +2,5 MiB |
-| `notificationPopup` | +2,2 MiB |
-| `overlay` | +0,2 MiB |
+| Item                                                                                        |                  Delta RSS aproximado |
+| ------------------------------------------------------------------------------------------- | ------------------------------------: |
+| `cheatsheet`                                                                                |                            +164,5 MiB |
+| `lock`                                                                                      |                            +108,1 MiB |
+| `osd`                                                                                       |                             +97,3 MiB |
+| `screenTranslator`                                                                          |                             +87,2 MiB |
+| `verticalBar`                                                                               |                             +60,9 MiB |
+| `wallpaperSelector`                                                                         |                             +56,4 MiB |
+| `background`                                                                                |                             +56,1 MiB |
+| `sidebarRight`                                                                              |                             +28,3 MiB |
+| `polkit`                                                                                    |                             +19,5 MiB |
+| `onScreenKeyboard`                                                                          |                              +2,9 MiB |
+| `regionSelector`                                                                            |                              +2,5 MiB |
+| `notificationPopup`                                                                         |                              +2,2 MiB |
+| `overlay`                                                                                   |                              +0,2 MiB |
 | `dock`, `bar`, `mediaControls`, `screenCorners`, `sessionScreen`, `overview`, `sidebarLeft` | aproximadamente 0 MiB dentro do ruído |
 
 ## 8. Comparação fork versus End4
@@ -307,24 +307,24 @@ Essa diferença confirma que o fork possui custo fixo maior no runtime/import gr
 
 ### 8.2. Itens em que o fork é mais pesado
 
-| Item | Fork | End4 | Diferença aproximada | Leitura |
-|---|---:|---:|---:|---|
-| `background` | +162,2 MiB | +56,1 MiB | fork +106,1 MiB | Principal discrepância nativa; investigar vídeo, parallax, surfaces e lifecycle. |
-| `overview` | +122,3 MiB | +0,8 MiB | fork +121,5 MiB | Maior discrepância QML/JS; investigar árvore criada mesmo sem abrir a Overview. |
-| `dock` | +69,8 MiB | +0,5 MiB | fork +69,3 MiB | No End4 a dock estava desativada; precisa de teste com config equivalente antes de concluir. |
-| `screenCorners` | +27,6 MiB | +0,2 MiB | fork +27,4 MiB | Fork cria mais surfaces/objetos; verificar se quatro janelas ficam vivas sem necessidade. |
-| `notificationPopup` | +15,0 MiB | +2,2 MiB | fork +12,8 MiB | Compatível com maior infraestrutura de notificação/som do fork. |
+| Item                |       Fork |      End4 | Diferença aproximada | Leitura                                                                                      |
+| ------------------- | ---------: | --------: | -------------------: | -------------------------------------------------------------------------------------------- |
+| `background`        | +162,2 MiB | +56,1 MiB |      fork +106,1 MiB | Principal discrepância nativa; investigar vídeo, parallax, surfaces e lifecycle.             |
+| `overview`          | +122,3 MiB |  +0,8 MiB |      fork +121,5 MiB | Maior discrepância QML/JS; investigar árvore criada mesmo sem abrir a Overview.              |
+| `dock`              |  +69,8 MiB |  +0,5 MiB |       fork +69,3 MiB | No End4 a dock estava desativada; precisa de teste com config equivalente antes de concluir. |
+| `screenCorners`     |  +27,6 MiB |  +0,2 MiB |       fork +27,4 MiB | Fork cria mais surfaces/objetos; verificar se quatro janelas ficam vivas sem necessidade.    |
+| `notificationPopup` |  +15,0 MiB |  +2,2 MiB |       fork +12,8 MiB | Compatível com maior infraestrutura de notificação/som do fork.                              |
 
 ### 8.3. Itens em que o End4 foi mais pesado
 
-| Item | Fork | End4 | Diferença aproximada | Leitura |
-|---|---:|---:|---:|---|
-| `cheatsheet` | +8,3 MiB | +164,5 MiB | End4 +156,2 MiB | O custo não é um defeito geral do fork; o End4 mantém mais dados/abas nesse harness. |
-| `lock` | +21,0 MiB | +108,1 MiB | End4 +87,1 MiB | Não priorizar no fork sem um cenário reproduzível que contradiga este resultado. |
-| `osd` | +11,8 MiB | +97,3 MiB | End4 +85,5 MiB | End4 criou mais objetos nativos nesse teste. |
-| `screenTranslator` | aproximadamente 0 | +87,2 MiB | End4 +87,2 MiB | Não aponta problema no fork. |
-| `wallpaperSelector` | aproximadamente 0 | +56,4 MiB | End4 +56,4 MiB | Não priorizar no fork com base nesta comparação. |
-| `verticalBar` | +20,3 MiB | +60,9 MiB | End4 +40,6 MiB | A barra vertical do fork não é a causa do consumo alto observado. |
+| Item                |              Fork |       End4 | Diferença aproximada | Leitura                                                                              |
+| ------------------- | ----------------: | ---------: | -------------------: | ------------------------------------------------------------------------------------ |
+| `cheatsheet`        |          +8,3 MiB | +164,5 MiB |      End4 +156,2 MiB | O custo não é um defeito geral do fork; o End4 mantém mais dados/abas nesse harness. |
+| `lock`              |         +21,0 MiB | +108,1 MiB |       End4 +87,1 MiB | Não priorizar no fork sem um cenário reproduzível que contradiga este resultado.     |
+| `osd`               |         +11,8 MiB |  +97,3 MiB |       End4 +85,5 MiB | End4 criou mais objetos nativos nesse teste.                                         |
+| `screenTranslator`  | aproximadamente 0 |  +87,2 MiB |       End4 +87,2 MiB | Não aponta problema no fork.                                                         |
+| `wallpaperSelector` | aproximadamente 0 |  +56,4 MiB |       End4 +56,4 MiB | Não priorizar no fork com base nesta comparação.                                     |
+| `verticalBar`       |         +20,3 MiB |  +60,9 MiB |       End4 +40,6 MiB | A barra vertical do fork não é a causa do consumo alto observado.                    |
 
 ### 8.4. Sidebars
 
@@ -363,7 +363,7 @@ A comparação é útil para priorização, mas não é uma equivalência perfei
 
 ### 10.1. Configuração do fork
 
-No arquivo `/home/pedro/.config/illogical-impulse/config.json`, o estado relevante incluía:
+No arquivo `/home/pedro/.config/quickshell/config.json`, o estado relevante incluía:
 
 - `panelFamily: "ii"`;
 - barra vertical ativa;
@@ -557,7 +557,7 @@ Validar o working tree e o JSON:
 
 ```bash
 git diff --check
-jq empty /home/pedro/.config/illogical-impulse/config.json
+jq empty /home/pedro/.config/quickshell/config.json
 git status --short
 ```
 
@@ -565,20 +565,20 @@ O teste original terminou com `git diff --check` limpo, nenhum harness temporár
 
 ## 12. Ferramentas usadas
 
-| Ferramenta | Uso |
-|---|---|
-| `qs list --all --no-color` | Enumerar instâncias e impedir processos duplicados. |
-| `qs -c ii` | Iniciar o fork em teste limpo. |
-| `qs -p <shell.qml>` | Iniciar a cópia do End4 fora do registro/configuração do fork. |
-| `qs log -c ii -t N` | Verificar erros e avisos do shell. |
-| `/proc/<pid>/smaps_rollup` | RSS, PSS, Private Dirty e Anonymous. |
-| `pmap -x <pid>` | Identificar e somar `JSGCHeap`. |
-| `ps --ppid <pid>` | Medir RSS de processos filhos diretos. |
-| `awk` | Extrair e somar métricas sem alterar o shell. |
-| `git diff --check` | Verificar whitespace e integridade textual das alterações. |
-| `jq` | Validar o JSON persistente do usuário. |
-| `rg` | Buscar declarações de loaders, serviços, singletons, erros e referências arquiteturais. |
-| `git` | Comparar a estrutura do fork, preservar o estado do usuário e inspecionar modificações. |
+| Ferramenta                 | Uso                                                                                     |
+| -------------------------- | --------------------------------------------------------------------------------------- |
+| `qs list --all --no-color` | Enumerar instâncias e impedir processos duplicados.                                     |
+| `qs -c ii`                 | Iniciar o fork em teste limpo.                                                          |
+| `qs -p <shell.qml>`        | Iniciar a cópia do End4 fora do registro/configuração do fork.                          |
+| `qs log -c ii -t N`        | Verificar erros e avisos do shell.                                                      |
+| `/proc/<pid>/smaps_rollup` | RSS, PSS, Private Dirty e Anonymous.                                                    |
+| `pmap -x <pid>`            | Identificar e somar `JSGCHeap`.                                                         |
+| `ps --ppid <pid>`          | Medir RSS de processos filhos diretos.                                                  |
+| `awk`                      | Extrair e somar métricas sem alterar o shell.                                           |
+| `git diff --check`         | Verificar whitespace e integridade textual das alterações.                              |
+| `jq`                       | Validar o JSON persistente do usuário.                                                  |
+| `rg`                       | Buscar declarações de loaders, serviços, singletons, erros e referências arquiteturais. |
+| `git`                      | Comparar a estrutura do fork, preservar o estado do usuário e inspecionar modificações. |
 
 Não foram usados IPC do Quickshell, capturas de tela, `hyprctl reload`, instâncias simultâneas ou processos `qs -p` deixados em background.
 
@@ -668,11 +668,11 @@ Overview.qml (loader `active`) lê TypeToSearch.armed
 
 Probes de atribuição (deltas sobre o baseline `none` do harness):
 
-| Probe | ΔRSS | ΔJSGC | Δfilhos |
-|---|---:|---:|---:|
-| `probeAi` (toca `Ai.enabled`) | +92 MiB | +49,6 MiB | +12 MiB |
-| `probeQuickToggleRegistry` | +43 MiB | +3,3 MiB | +12 MiB |
-| `probeLauncherSearch` | +125 MiB | +50,7 MiB | +23 MiB |
+| Probe                         |     ΔRSS |     ΔJSGC | Δfilhos |
+| ----------------------------- | -------: | --------: | ------: |
+| `probeAi` (toca `Ai.enabled`) |  +92 MiB | +49,6 MiB | +12 MiB |
+| `probeQuickToggleRegistry`    |  +43 MiB |  +3,3 MiB | +12 MiB |
+| `probeLauncherSearch`         | +125 MiB | +50,7 MiB | +23 MiB |
 
 Ou seja: o item `overview` da auditoria não media a Overview — media o LauncherSearch + Ai + QuickToggleRegistry puxados pela cadeia acima. Em produção o LauncherSearch também nascia no boot (via `BarContext`), mas o grafo Ai e o QuickToggleRegistry só existiam por causa dessa cadeia — com `policies.ai: 0` inclusive.
 
@@ -686,12 +686,12 @@ Ou seja: o item `overview` da auditoria não media a Overview — media o Launch
 
 ### 15.3. Resultados (mesmo harness, mesmo procedimento)
 
-| Item | ΔRSS antes | ΔRSS depois | ΔJSGC antes | ΔJSGC depois |
-|---|---:|---:|---:|---:|
-| fork `overview` | +122,3 MiB | **+0,15 MiB** | +49,6 MiB | **~0 MiB** |
-| fork `probeLauncherSearch` | +125 MiB | +21,3 MiB | +50,7 MiB | +7,6 MiB |
-| fork `probeAi` | +92 MiB | +92 MiB (só quando usado) | +49,6 MiB | +49,6 MiB |
-| end4 `overview` (reproduzido) | +0,8 MiB | +0,0 MiB | — | — |
+| Item                          | ΔRSS antes |               ΔRSS depois | ΔJSGC antes | ΔJSGC depois |
+| ----------------------------- | ---------: | ------------------------: | ----------: | -----------: |
+| fork `overview`               | +122,3 MiB |             **+0,15 MiB** |   +49,6 MiB |   **~0 MiB** |
+| fork `probeLauncherSearch`    |   +125 MiB |                 +21,3 MiB |   +50,7 MiB |     +7,6 MiB |
+| fork `probeAi`                |    +92 MiB | +92 MiB (só quando usado) |   +49,6 MiB |    +49,6 MiB |
+| end4 `overview` (reproduzido) |   +0,8 MiB |                  +0,0 MiB |           — |            — |
 
 Efeito em produção: o boot deixa de construir o grafo Ai (~92 MiB) e o QuickToggleRegistry (~43 MiB). Eles passam a existir na primeira query real / primeiro compute — que é quando a feature os exige de fato (a busca de settings usa o índice da `AiSettingsIntegration` por design; `isSettingsSearchQuery` aceita qualquer query sem prefixo).
 
@@ -711,7 +711,7 @@ Efeito em produção: o boot deixa de construir o grafo Ai (~92 MiB) e o QuickTo
 
 ## 16. Otimização aplicada: Background (2026-09-15, mesmo dia)
 
-A Prioridade 2 deste relatório foi executada. A análise estática comparada com o End4 concluiu que o delta não era estrutural — todos os efeitos (Lock*, backing, BlurOverlayWindow) já eram lazy e gated — mas sim o **tamanho do arquivo decodificado**, agravado por três defeitos.
+A Prioridade 2 deste relatório foi executada. A análise estática comparada com o End4 concluiu que o delta não era estrutural — todos os efeitos (Lock\*, backing, BlurOverlayWindow) já eram lazy e gated — mas sim o **tamanho do arquivo decodificado**, agravado por três defeitos.
 
 ### 16.1. A comparação original estava viciada neste item
 
@@ -748,10 +748,10 @@ O sandbox do End4 media com o wallpaper default dele (`default_wallpaper.png`, 3
 
 ### 17.1. Observações do usuário (medições manuais)
 
-| Superfície | Custo observado |
-|---|---|
-| Notes tab no dashboard | ~20 MiB |
-| `keepRightSidebarLoaded` | ~30 MiB |
+| Superfície                         | Custo observado                                             |
+| ---------------------------------- | ----------------------------------------------------------- |
+| Notes tab no dashboard             | ~20 MiB                                                     |
+| `keepRightSidebarLoaded`           | ~30 MiB                                                     |
 | `keepLeftSidebarLoaded` (policies) | **50 MiB sem abas usadas → 100 MiB (±40) conforme as abas** |
 
 Config no momento: `keepLeftSidebarLoaded: true`, `keepRightSidebarLoaded: false`,
@@ -798,13 +798,13 @@ aba Translator selecionada no estado sandbox) mediu **+130 MiB de RSS e JSGC +49
 assinatura de JSGC é idêntica à construção do grafo Ai (`probeAi`: +49,6). Bissecção dentro
 da árvore da aba Translator:
 
-| Variante | ΔRSS | ΔJSGC | Leitura |
-|---|---:|---:|---|
-| Árvores de aba desativadas (só shell do content) | ~0 | ~0 | O shell do content é barato. |
-| Árvore Translator + `getLanguagesProc` com `running: false` | ~0 | ~0 | Sem o processo, sem custo. |
-| Árvore Translator + `command: ["sleep", "30"]` (nunca exita na janela) | ~0 | ~0 | Criança viva não basta. |
-| Árvore Translator + `command: ["trans", ...]` (original) | **+148** | **+49,6** | Reproduzido 5×. |
-| Árvore Translator + `command: ["bash", "-c", "sleep 3"]` (exita, sem rede/stdout) | **+150** | **+55** | **Não é o trans, nem rede, nem stdout — é o EXIT do processo.** |
+| Variante                                                                          |     ΔRSS |     ΔJSGC | Leitura                                                         |
+| --------------------------------------------------------------------------------- | -------: | --------: | --------------------------------------------------------------- |
+| Árvores de aba desativadas (só shell do content)                                  |       ~0 |        ~0 | O shell do content é barato.                                    |
+| Árvore Translator + `getLanguagesProc` com `running: false`                       |       ~0 |        ~0 | Sem o processo, sem custo.                                      |
+| Árvore Translator + `command: ["sleep", "30"]` (nunca exita na janela)            |       ~0 |        ~0 | Criança viva não basta.                                         |
+| Árvore Translator + `command: ["trans", ...]` (original)                          | **+148** | **+49,6** | Reproduzido 5×.                                                 |
+| Árvore Translator + `command: ["bash", "-c", "sleep 3"]` (exita, sem rede/stdout) | **+150** |   **+55** | **Não é o trans, nem rede, nem stdout — é o EXIT do processo.** |
 
 Fatos estabelecidos:
 
@@ -878,12 +878,12 @@ Settings realmente o usa.
 
 Medições novas no sandbox do fork, processo limpo e janela de estabilização de ~10 s:
 
-| Cenário | RSS | JSGCHeap | Filhos diretos |
-|---|---:|---:|---:|
-| baseline `none` | ~326 MiB | ~4,9 MiB | ~4,2 MiB |
-| Policies, `tab: 0` antes | ~450 MiB | ~54,9 MiB | ~16,3 MiB |
+| Cenário                   |              RSS |           JSGCHeap | Filhos diretos |
+| ------------------------- | ---------------: | -----------------: | -------------: |
+| baseline `none`           |         ~326 MiB |           ~4,9 MiB |       ~4,2 MiB |
+| Policies, `tab: 0` antes  |         ~450 MiB |          ~54,9 MiB |      ~16,3 MiB |
 | Policies, `tab: 0` depois | **~376–378 MiB** | **~10,8–10,9 MiB** | ~15,7–16,3 MiB |
-| Policies, `tab: 1` depois | ~355 MiB | ~7,4 MiB | ~4,2 MiB |
+| Policies, `tab: 1` depois |         ~355 MiB |           ~7,4 MiB |       ~4,2 MiB |
 
 O probe que chamou `ensureIndex()` explicitamente subiu para ~394 MiB / ~37,7 MiB de
 JSGCHeap, confirmando que o recurso não foi removido: apenas deixou de ser residente no

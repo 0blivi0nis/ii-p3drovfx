@@ -3,7 +3,7 @@
 
 Two folders hold every choice a person has made here:
 
-  ~/.config/illogical-impulse   settings, presets, profile pictures, extensions
+  ~/.config/quickshell   settings, presets, profile pictures, extensions
   ~/.local/state/quickshell     todo, notes, clipboard pins, usage, keybinds…
 
 Neither is reproducible from the repository, and losing them is losing the

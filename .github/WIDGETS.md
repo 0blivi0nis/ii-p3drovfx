@@ -21,8 +21,8 @@ my-widget/
 
 ```json
 {
-  "name": "My Widget",
-  "component": "MyWidget.qml"
+	"name": "My Widget",
+	"component": "MyWidget.qml"
 }
 ```
 
@@ -58,64 +58,64 @@ AbstractBackgroundWidget {
 
 ## widget.json Schema
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `name` | string | **Yes** | Display name shown in the widget gallery. |
-| `component` | string | **Yes** | Relative path to the main QML file. |
-| `description` | string | No | Short description shown in the widget card. |
-| `version` | string | No | Semantic version (e.g. `"1.0.0"`). Used for update checking. |
-| `author` | string | No | Author display name. |
-| `icon` | string | No | [Material Symbols](https://fonts.google.com/icons) icon name. Default: `"extension"`. |
-| `category` | string | No | Gallery category. See [Categories](#categories). Default: `"Utility"`. |
-| `preview` | string | No | Relative path to a preview image (PNG/JPG). Shown in gallery instead of live render. |
-| `defaultWidth` | number | No | Default widget width in pixels. Default: `200`. |
-| `defaultHeight` | number | No | Default widget height in pixels. Default: `200`. |
-| `defaultX` | number | No | Default x position on desktop. Default: `200`. |
-| `defaultY` | number | No | Default y position on desktop. Default: `200`. |
-| `configDefaults` | object | No | Default key-value config applied on install. |
-| `configSchema` | object | No | Typed settings schema. Auto-renders a settings UI. See [Config Schema](#config-schema). |
+| Field            | Type   | Required | Description                                                                             |
+| ---------------- | ------ | -------- | --------------------------------------------------------------------------------------- |
+| `name`           | string | **Yes**  | Display name shown in the widget gallery.                                               |
+| `component`      | string | **Yes**  | Relative path to the main QML file.                                                     |
+| `description`    | string | No       | Short description shown in the widget card.                                             |
+| `version`        | string | No       | Semantic version (e.g. `"1.0.0"`). Used for update checking.                            |
+| `author`         | string | No       | Author display name.                                                                    |
+| `icon`           | string | No       | [Material Symbols](https://fonts.google.com/icons) icon name. Default: `"extension"`.   |
+| `category`       | string | No       | Gallery category. See [Categories](#categories). Default: `"Utility"`.                  |
+| `preview`        | string | No       | Relative path to a preview image (PNG/JPG). Shown in gallery instead of live render.    |
+| `defaultWidth`   | number | No       | Default widget width in pixels. Default: `200`.                                         |
+| `defaultHeight`  | number | No       | Default widget height in pixels. Default: `200`.                                        |
+| `defaultX`       | number | No       | Default x position on desktop. Default: `200`.                                          |
+| `defaultY`       | number | No       | Default y position on desktop. Default: `200`.                                          |
+| `configDefaults` | object | No       | Default key-value config applied on install.                                            |
+| `configSchema`   | object | No       | Typed settings schema. Auto-renders a settings UI. See [Config Schema](#config-schema). |
 
 ### Full Example
 
 ```json
 {
-  "name": "System Monitor",
-  "description": "Shows CPU, RAM and network usage in a compact widget.",
-  "version": "1.2.0",
-  "author": "yourhandle",
-  "icon": "monitor_heart",
-  "category": "System",
-  "component": "SystemMonitor.qml",
-  "preview": "assets/preview.png",
-  "defaultWidth": 280,
-  "defaultHeight": 160,
+	"name": "System Monitor",
+	"description": "Shows CPU, RAM and network usage in a compact widget.",
+	"version": "1.2.0",
+	"author": "yourhandle",
+	"icon": "monitor_heart",
+	"category": "System",
+	"component": "SystemMonitor.qml",
+	"preview": "assets/preview.png",
+	"defaultWidth": 280,
+	"defaultHeight": 160,
 
-  "configDefaults": {
-    "refreshInterval": 2,
-    "showNetwork": true,
-    "unit": "percent"
-  },
+	"configDefaults": {
+		"refreshInterval": 2,
+		"showNetwork": true,
+		"unit": "percent"
+	},
 
-  "configSchema": {
-    "refreshInterval": {
-      "type": "slider",
-      "label": "Refresh Interval (seconds)",
-      "default": 2,
-      "min": 1,
-      "max": 10
-    },
-    "showNetwork": {
-      "type": "bool",
-      "label": "Show Network Speed",
-      "default": true
-    },
-    "unit": {
-      "type": "enum",
-      "label": "Usage Unit",
-      "default": "percent",
-      "values": ["percent", "absolute"]
-    }
-  }
+	"configSchema": {
+		"refreshInterval": {
+			"type": "slider",
+			"label": "Refresh Interval (seconds)",
+			"default": 2,
+			"min": 1,
+			"max": 10
+		},
+		"showNetwork": {
+			"type": "bool",
+			"label": "Show Network Speed",
+			"default": true
+		},
+		"unit": {
+			"type": "enum",
+			"label": "Usage Unit",
+			"default": "percent",
+			"values": ["percent", "absolute"]
+		}
+	}
 }
 ```
 
@@ -125,18 +125,18 @@ AbstractBackgroundWidget {
 
 Use one of the standard categories to ensure your widget appears in the right section of the gallery:
 
-| Category | Description | Icon |
-|---|---|---|
-| `Clock` | Clocks and timers | `schedule` |
-| `Media` | Music/video players | `play_circle` |
-| `Weather` | Weather and forecasts | `cloud` |
-| `Photo` | Photos and images | `image` |
-| `Date` | Calendars and dates | `calendar_today` |
-| `System` | CPU, RAM, disk, network | `monitor_heart` |
-| `Social` | Feeds and social media | `forum` |
-| `Productivity` | Notes, tasks, reminders | `task_alt` |
-| `Fun` | Decorative and fun | `toys` |
-| `Utility` | Everything else (default) | `build` |
+| Category       | Description               | Icon             |
+| -------------- | ------------------------- | ---------------- |
+| `Clock`        | Clocks and timers         | `schedule`       |
+| `Media`        | Music/video players       | `play_circle`    |
+| `Weather`      | Weather and forecasts     | `cloud`          |
+| `Photo`        | Photos and images         | `image`          |
+| `Date`         | Calendars and dates       | `calendar_today` |
+| `System`       | CPU, RAM, disk, network   | `monitor_heart`  |
+| `Social`       | Feeds and social media    | `forum`          |
+| `Productivity` | Notes, tasks, reminders   | `task_alt`       |
+| `Fun`          | Decorative and fun        | `toys`           |
+| `Utility`      | Everything else (default) | `build`          |
 
 ---
 
@@ -167,23 +167,23 @@ AbstractBackgroundWidget {
 
 ### Injected Properties
 
-| Property | Type | Description |
-|---|---|---|
-| `widgetExtensionId` | string | The widget's ID (derived from the repository/directory name). |
-| `widgetConfig` | var (object) | Current config values. Read-only. Use the settings schema to let users change them. |
+| Property            | Type         | Description                                                                         |
+| ------------------- | ------------ | ----------------------------------------------------------------------------------- |
+| `widgetExtensionId` | string       | The widget's ID (derived from the repository/directory name).                       |
+| `widgetConfig`      | var (object) | Current config values. Read-only. Use the settings schema to let users change them. |
 
 ### Inherited from `AbstractBackgroundWidget`
 
 You get these for free without any extra code:
 
-| Property | Type | Description |
-|---|---|---|
-| `colText` | color | Adaptive text color based on wallpaper region. |
-| `colTextSecondary` | color | Secondary adaptive text color. |
-| `colTextTertiary` | color | Tertiary adaptive text color. |
-| `screenWidth` | real | Full screen width in pixels. |
-| `screenHeight` | real | Full screen height in pixels. |
-| `wallpaperScale` | real | Current wallpaper scale factor. |
+| Property           | Type  | Description                                    |
+| ------------------ | ----- | ---------------------------------------------- |
+| `colText`          | color | Adaptive text color based on wallpaper region. |
+| `colTextSecondary` | color | Secondary adaptive text color.                 |
+| `colTextTertiary`  | color | Tertiary adaptive text color.                  |
+| `screenWidth`      | real  | Full screen width in pixels.                   |
+| `screenHeight`     | real  | Full screen height in pixels.                  |
+| `wallpaperScale`   | real  | Current wallpaper scale factor.                |
 
 ### Reading Config Values
 
@@ -207,49 +207,49 @@ Define `configSchema` in `widget.json` to get a settings UI automatically genera
 
 ### Supported Types
 
-| Type | Control | Extra Properties |
-|---|---|---|
-| `bool` | Toggle switch | — |
-| `int` | Spin box | `min`, `max` |
-| `float` | Decimal spin box | `min`, `max` |
-| `slider` | Slider (float) | `min`, `max` |
-| `enum` | Dropdown | `values` (string array) |
-| `string` | Text field | `placeholder` (optional) |
+| Type     | Control          | Extra Properties         |
+| -------- | ---------------- | ------------------------ |
+| `bool`   | Toggle switch    | —                        |
+| `int`    | Spin box         | `min`, `max`             |
+| `float`  | Decimal spin box | `min`, `max`             |
+| `slider` | Slider (float)   | `min`, `max`             |
+| `enum`   | Dropdown         | `values` (string array)  |
+| `string` | Text field       | `placeholder` (optional) |
 
 ### Example Schema
 
 ```json
 {
-  "configSchema": {
-    "refreshInterval": {
-      "type": "int",
-      "label": "Refresh every N seconds",
-      "default": 30,
-      "min": 5,
-      "max": 300
-    },
-    "showTitle": {
-      "type": "bool",
-      "label": "Show title bar",
-      "default": true
-    },
-    "style": {
-      "type": "enum",
-      "label": "Visual style",
-      "default": "compact",
-      "values": ["compact", "expanded", "minimal"]
-    },
-    "apiKey": {
-      "type": "string",
-      "label": "API Key",
-      "default": "",
-      "placeholder": "Enter your API key..."
-    }
-  }
+	"configSchema": {
+		"refreshInterval": {
+			"type": "int",
+			"label": "Refresh every N seconds",
+			"default": 30,
+			"min": 5,
+			"max": 300
+		},
+		"showTitle": {
+			"type": "bool",
+			"label": "Show title bar",
+			"default": true
+		},
+		"style": {
+			"type": "enum",
+			"label": "Visual style",
+			"default": "compact",
+			"values": ["compact", "expanded", "minimal"]
+		},
+		"apiKey": {
+			"type": "string",
+			"label": "API Key",
+			"default": "",
+			"placeholder": "Enter your API key..."
+		}
+	}
 }
 ```
 
-Config values are stored in `widget_extensions.json` under `~/.config/illogical-impulse/` and persist across sessions and presets.
+Config values are stored in `widget_extensions.json` under `~/.config/quickshell/` and persist across sessions and presets.
 
 ---
 
@@ -299,23 +299,23 @@ AbstractBackgroundWidget {
 
 ### Common Color Tokens
 
-| Token | Description |
-|---|---|
-| `Appearance.colors.colSurfaceContainerHigh` | Card/surface background |
-| `Appearance.colors.colSurfaceContainerLow` | Subtle surface |
-| `Appearance.colors.colPrimary` | Primary accent color |
-| `Appearance.colors.colOnLayer0` | Text on background |
-| `root.colText` | Adaptive text (adapts to wallpaper) |
-| `root.colTextSecondary` | Secondary adaptive text |
+| Token                                       | Description                         |
+| ------------------------------------------- | ----------------------------------- |
+| `Appearance.colors.colSurfaceContainerHigh` | Card/surface background             |
+| `Appearance.colors.colSurfaceContainerLow`  | Subtle surface                      |
+| `Appearance.colors.colPrimary`              | Primary accent color                |
+| `Appearance.colors.colOnLayer0`             | Text on background                  |
+| `root.colText`                              | Adaptive text (adapts to wallpaper) |
+| `root.colTextSecondary`                     | Secondary adaptive text             |
 
 ### Common Size Tokens
 
-| Token | Description |
-|---|---|
-| `Appearance.rounding.normal` | Standard corner radius |
-| `Appearance.rounding.large` | Large corner radius |
-| `Appearance.font.pixelSize.normal` | Normal font size |
-| `Appearance.font.pixelSize.small` | Small font size |
+| Token                              | Description            |
+| ---------------------------------- | ---------------------- |
+| `Appearance.rounding.normal`       | Standard corner radius |
+| `Appearance.rounding.large`        | Large corner radius    |
+| `Appearance.font.pixelSize.normal` | Normal font size       |
+| `Appearance.font.pixelSize.small`  | Small font size        |
 
 ---
 

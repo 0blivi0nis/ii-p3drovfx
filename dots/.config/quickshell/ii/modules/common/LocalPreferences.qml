@@ -16,7 +16,7 @@ import Quickshell.Io
  * pins, the accounts' machine state.
  *
  * This singleton mirrors them, continuously, into
- * `~/.config/illogical-impulse/local-preferences.json` — a plain JSON map of
+ * `~/.config/quickshell/local-preferences.json` — a plain JSON map of
  * `{ "<dotted.config.path>": <value> }`, holding only values that differ
  * from the QML defaults, so the file stays small and a default is never
  * pinned. config.json keeps working exactly as before (single adapter,

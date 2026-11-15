@@ -11,7 +11,7 @@ import qs.modules.common.functions
  * WorkspaceProfileService
  *
  * Manages per-file workspace profiles stored in
- * ~/.config/illogical-impulse/workspace_profiles/<slug>.json
+ * ~/.config/quickshell/workspace_profiles/<slug>.json
  *
  * Each public function delegates to the workspace_profile_manager Rust binary.
  */
@@ -527,7 +527,7 @@ Singleton {
     Component.onCompleted: {
         // Ensure profiles directory exists
         Quickshell.execDetached(["mkdir", "-p",
-            FileUtils.trimFileProtocol(`${Directories.home}/.config/illogical-impulse/workspace_profiles`)]);
+            FileUtils.trimFileProtocol(`${Directories.home}/.config/quickshell/workspace_profiles`)]);
         checkBinaryProc.running = true;
         Qt.callLater(root.refresh);
     }

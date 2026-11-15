@@ -113,7 +113,7 @@ elif args.color is not None:
     hct = Hct.from_int(argb)
 else:
     import os
-    config_file = os.path.expanduser("~/.config/illogical-impulse/config.json")
+    config_file = os.path.expanduser("~/.config/quickshell/config.json")
     wall_path = None
     if os.path.isfile(config_file):
         try:

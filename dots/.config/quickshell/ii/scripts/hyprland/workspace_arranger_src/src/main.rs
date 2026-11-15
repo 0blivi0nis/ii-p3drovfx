@@ -64,7 +64,7 @@ fn change_id(from: i64, to: i64) -> String {
     format!("hl.dsp.workspace.change_id({{ workspace = {}, id = {} }})", from, to)
 }
 
-/// Mirrors `Config.options.bar.workspaces` (`~/.config/illogical-impulse/config.json`) — the
+/// Mirrors `Config.options.bar.workspaces` (`~/.config/quickshell/config.json`) — the
 /// same per-monitor ranges the bar itself uses, so the arranger lands windows where the bar
 /// already expects them.
 struct WorkspaceMapConfig {

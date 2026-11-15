@@ -42,7 +42,7 @@
 #   -q, --quiet               Only errors on stdout
 #       --backup              Keep the replaced config (default)
 #       --no-backup           Discard the replaced config instead
-#       --keep-config         Never reset ~/.config/illogical-impulse/config.json
+#       --keep-config         Never reset ~/.config/quickshell/config.json
 #       --reset-config        Always reset it (a backup is kept)
 #       --force               Redeploy even when already on the remote commit
 #       --no-restart          Leave Quickshell alone when finished
@@ -3437,7 +3437,7 @@ show_help() {
     printf '  %s%-24s%s %s\n' "$C_STEP" "-q, --quiet" "$C_RST" "Only errors on stdout"
     printf '  %s%-24s%s %s\n' "$C_STEP" "    --backup" "$C_RST" "Keep the replaced config (default)"
     printf '  %s%-24s%s %s\n' "$C_STEP" "    --no-backup" "$C_RST" "Discard the previous config instead of keeping it"
-    printf '  %s%-24s%s %s\n' "$C_STEP" "    --keep-config" "$C_RST" "Never reset ~/.config/illogical-impulse/config.json"
+    printf '  %s%-24s%s %s\n' "$C_STEP" "    --keep-config" "$C_RST" "Never reset ~/.config/quickshell/config.json"
     printf '  %s%-24s%s %s\n' "$C_STEP" "    --reset-config" "$C_RST" "Always reset it (a backup is kept)"
     printf '  %s%-24s%s %s\n' "$C_STEP" "    --force" "$C_RST" "Redeploy even when already up to date"
     printf '  %s%-24s%s %s\n' "$C_STEP" "    --no-restart" "$C_RST" "Leave Quickshell alone when finished"

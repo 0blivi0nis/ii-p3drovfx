@@ -102,7 +102,7 @@ def is_sensitive_path(path: str) -> bool:
     # file the settings tools already read and write through a validated path
     # — attaching the directory as a "document" would be a second, unchecked
     # way to the same data.
-    shell_config_dir = os.path.realpath(os.path.expanduser("~/.config/illogical-impulse"))
+    shell_config_dir = os.path.realpath(os.path.expanduser("~/.config/quickshell"))
     if expanded == shell_config_dir or expanded.startswith(shell_config_dir + os.sep):
         return expanded != os.path.join(shell_config_dir, "config.json")
     return False

@@ -69,7 +69,7 @@ SUPERSEDED_WAIT_SECONDS = 600
 
 
 # ── Paths ────────────────────────────────────────────────────────────────────
-CONFIG_JSON = os.path.expanduser("~/.config/illogical-impulse/config.json")
+CONFIG_JSON = os.path.expanduser("~/.config/quickshell/config.json")
 COLORS_JSON = os.path.expanduser("~/.local/state/quickshell/user/generated/colors.json")
 TARGET_THEME_PATH = os.path.expanduser("~/.local/share/icons/DynamicTheme")
 ANALYSIS_CACHE = os.path.join(os.environ.get("XDG_CACHE_HOME") or os.path.expanduser("~/.cache"),

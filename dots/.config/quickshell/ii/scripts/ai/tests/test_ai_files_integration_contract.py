@@ -139,13 +139,13 @@ class SensitivePathTests(unittest.TestCase):
         self.assertTrue(ATTACH.is_sensitive_path("/home/user/.ssh/id_whatever_new_format"))
 
     def test_the_shells_own_config_directory_is_off_limits(self):
-        self.assertTrue(ATTACH.is_sensitive_path(os.path.expanduser("~/.config/illogical-impulse/some_state.json")))
+        self.assertTrue(ATTACH.is_sensitive_path(os.path.expanduser("~/.config/quickshell/some_state.json")))
 
     def test_except_the_one_file_settings_tools_already_read(self):
         # config.json itself goes through the validated settings path
         # already; blocking it here too would just be a second, worse gate on
         # the same data.
-        self.assertFalse(ATTACH.is_sensitive_path(os.path.expanduser("~/.config/illogical-impulse/config.json")))
+        self.assertFalse(ATTACH.is_sensitive_path(os.path.expanduser("~/.config/quickshell/config.json")))
 
     def test_ordinary_files_are_not_swept_up(self):
         self.assertFalse(ATTACH.is_sensitive_path("/home/user/Documents/report.pdf"))

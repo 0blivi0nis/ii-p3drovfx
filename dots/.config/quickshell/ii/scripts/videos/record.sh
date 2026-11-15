@@ -7,7 +7,7 @@ unset LD_PRELOAD
 # Resolved up front: the recording branches cd into the save directory later.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-CONFIG_FILE="$HOME/.config/illogical-impulse/config.json"
+CONFIG_FILE="$HOME/.config/quickshell/config.json"
 JSON_PATH=".screenRecord.savePath"
 SERVICE_PATH=".screenRecord.service"
 

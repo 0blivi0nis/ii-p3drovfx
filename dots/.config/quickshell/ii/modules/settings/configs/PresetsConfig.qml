@@ -181,7 +181,7 @@ Item {
             Layout.fillWidth: true
             Layout.topMargin: -20
             visible: presetsConfigRoot.currentTab === 0
-            text: Translation.tr('Not all options are available in this app. You should also check the config file by hitting the "Config file" button on the topleft corner or opening ~/.config/illogical-impulse/config.json manually.')
+            text: Translation.tr('Not all options are available in this app. You should also check the config file by hitting the "Config file" button on the topleft corner or opening ~/.config/quickshell/config.json manually.')
 
             RippleButtonWithIcon {
                 id: copyPathButton

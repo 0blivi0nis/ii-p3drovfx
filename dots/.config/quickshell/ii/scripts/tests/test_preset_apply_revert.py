@@ -17,7 +17,7 @@ class TestPresetApplyRevert(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
         self.user_dir = self.root / 'home'
-        self.presets = self.user_dir / '.config/illogical-impulse/presets'
+        self.presets = self.user_dir / '.config/quickshell/presets'
         self.presets.mkdir(parents=True)
         self.config = self.presets.parent / 'config.json'
         self.original = b'{\n  "configVersion": 16, "bar": {"height": 40}, "localOnly": "keep me"\n}\n'

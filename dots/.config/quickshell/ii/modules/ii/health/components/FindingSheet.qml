@@ -176,7 +176,7 @@ ClockSheet {
             ];
         case "config":
             return [
-                ["description", S.Cookie7Sided, Translation.tr("File"), "~/.config/illogical-impulse/config.json"],
+                ["description", S.Cookie7Sided, Translation.tr("File"), "~/.config/quickshell/config.json"],
                 ["list", S.Clover4Leaf, Translation.tr("Settings"), Array.from(d.keys ?? []).slice(0, 6).join(", ") || "—"]
             ];
         case "battery":

@@ -8,7 +8,7 @@ import qs.modules.common
 /**
  * ShellBackup — one zip holding everything the shell knows about a user.
  *
- * Two folders carry every choice made here: `~/.config/illogical-impulse`
+ * Two folders carry every choice made here: `~/.config/quickshell`
  * (settings, presets, profile pictures, extensions) and
  * `~/.local/state/quickshell` (todo, notes, clipboard pins, usage, keybinds).
  * Neither comes back from a reinstall, so losing them is losing the desktop
